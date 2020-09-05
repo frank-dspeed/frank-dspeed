@@ -3,7 +3,7 @@
 - 🔭 I’m currently working on ...
 <p>A lot of Projects as i join them together into a uniq Project to reduce the redundancies in them as also allow to focus on new features and better performance
 together inside the projects. I see redundancy as one of the biggest issues today. As We Produce to much stuff without thinking for example there are over 1000 Package Managers around and maybe even more and they all do the same thing more or less...</p>
-<img alt="Franks README Stats" src="https://github-readme-stats.vercel.app/api?username=frank-dspeed"><img alt="Franks Top Used Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=frank-dspeed&hide=html">
+<p><img alt="Franks README Stats" src="https://github-readme-stats.vercel.app/api?username=frank-dspeed"><img alt="Franks Top Used Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=frank-dspeed&hide=html"></p>
 <!--
 **frank-dspeed/frank-dspeed** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
