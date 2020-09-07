@@ -1,0 +1,1421 @@
+<div class="body">  
+
+# Windows 10 AME Documentation <span class="badge" style="bottom: 7px; left: 3px;">New!</span>
+
+<aside>Version 1903 Dated 2020-02-06</aside>
+
+<div class="comment-vertical">
+
+**Note about this article**  
+A packaged version of this guide, for offline use, is available <a style="" href="">here</a> [Not yet available]
+
+</div>
+
+The goal of the AME project is to provide a stable and non-intrusive build of Windows 10, without sacrificing usability and Win32 compatibility for the majority of mainstream applications. This includes the avoidance and riddance of privacy infringing automated data collection services, central to Microsoft’s strategy for the Windows 10 operating system.
+
+This page provides a complete step-by-step description of how AME images are mastered based on Windows 10 build 1903 with minor proceeding updates, defining a complete documentation of this project.
+
+While large portions of this process have been automated using various scripts and Linux command line utilities, a large majority requires manual effort, with many of the steps often producing differing and sometimes non-predictable results from instance to instance, increasing the difficulty of this procedure. As such, sections where abnormal behavior may occur have been appropriately highlighted.
+
+<dp>It is also recommended that anyone attempting to reproduce the steps in this guide be moderately versed with Linux and consequently also not afraid of using the command line.
+
+## Contents
+
+1.  [Windows 10 1903 Installation](#install)
+2.  [Updating Windows](#updates)
+3.  [Cleanin-Up Basic UI Elements](#basic_cleanup)
+4.  [Install OpenSSH server (optional)](#openssh)
+5.  [Run Amelioration Script (Pre)](#ame_pre)
+6.  [Linux: Run Ameliorate Script](#snd)
+7.  [Run Amelioration Script (Post)](#ame_post)
+8.  [Setup Classic-Shell](#classicshell)
+9.  [Modify Windows Explorer](#explorer)
+10.  [Run the latest hardentools from Security Without Borders](#hardentools)
+11.  [Set Application Defaults](#defaults)
+12.  [Setting the default wallpaper for desktop and lock screen](#wallpaper)
+
+## Installation of Windows 10 1903
+
+Firstly, you will need to grab a clean ISO of Windows 10 build 1903\. This can be done from Microsoft’s website directly, or via the use of third party tools, such as the [Microsoft Windows and Office ISO Download Tool](https://www.heidoc.net/joomla/technology-science/microsoft/67-microsoft-windows-and-office-iso-download-tool).
+
+During installation, particularly the next few steps, it is necessary to disconnect your target machine from the Internet. Burn the image to a USB flash drive or attach it in your VM manager to boot the installation medium. A partition size of at least 32GB is required.
+
+You will be asked to provide a product key.  
+When asked, use <span class="code">2B87N-8KFHP-DKV6R-Y2C8J-PKCKT</span>, which is a Generic License key for Windows 10 Pro N RTM. If your hardware has already been activated with a legitimate key, or if you have acquired your own, please enter your key instead. This generic key does not activate Windows; rather, it only allows for the installation to continue.
+
+<div class="comment-vertical">
+
+If you purchased your key from a third party, you may want to activate the key using a vanilla Windows 10 Installation on your machine before proceeding with AME, as the key will be tied to your motherboard and unable to be used again. Third party sellers sometimes check for this so they can make more money by reselling the key if you did not use it within a short time from purchasing it.
+
+</div>
+
+### Post Install Procedure - After the initial installation perform the following steps:
+
+The installation and initial setup proceeds mostly normally, with the arguably placebo-trier toggles for privacy being disabled for good measure. **It is again very vital to mention that no internet connection be established during the entire installation!**
+
+<div>
+
+<div style="font-size: 12pt;  padding-top: 10px;">**Video: Windows 10 Post Install**  
+During the initial post-install setup, select your default language, skip any network setup (it will ask twice, click no on the second prompt), and add a user as a local account. This user will be the user which does not have administrator privileges. The username can be anything you want, but on AME releases the username is simply "user".</div>
+
+</div>
+
+## Extracting and Installing Updates
+
+Before further changing the operating system, we recommend installing Microsoft’s security updates. Both the Servicing Stack Update (SSU) and Cumulative Updates are required to properly install updates. The Cumulative Update includes all updates released since the initial release of 1903\. This means that only the latest Cumulative Update is required to obtain updates included in prior Cumulative Updates. The correct SSU for the Cumulative Update package can be found in the **"How to get this update"** section of each Cumulative Update page. For a full list of update options, as well as updates proceeding this guide, follow the Microsoft link [here](https://support.microsoft.com/en-us/help/4528760). The latest AME release uses SSU [KB4528759](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4528759) in conjunction with Cumulative Update [KB4528760](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4528760).
+
+<div class="comment-vertical">
+
+Proceed at your own risk when installing updates outside of the scope of this guide, as amelioration features with respect to privacy may be jeopardized.
+
+</div>
+
+To install an update, use Microsoft’s Deployment Image Servicing and Management (DISM) tool.
+
+Firstly, extract the desired .cab file from the .msu files:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">expand</span> <span style="color: #a4df2d">-F</span><span style="color: #f2246e">:*</span> <.msu file> <dest>
+</pre>
+
+</div>
+
+</div>
+
+The SSU will need to be installed prior to the Cumulative Update, but the DISM command structure is identical. Just point to the correct .cab file.
+
+Copy the <span class="code">Windows10.0-KB4528759-x64.cab</span> and <span class="code">Windows10.0-KB4528760_PSFX.cab</span> files to the root of the C: drive, or a location of your choosing, and run the following commands from an elevated command prompt:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">dism</span> /online <span style="color: #a4df2d">/add-package</span> /packagepath=C:\Windows10.0-KB4528759-x64.cab
+</pre>
+
+</div>
+
+</div>
+
+Reboot before installing the Cumulative Update
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">shutdown</span> /r /t 0
+</pre>
+
+</div>
+
+</div>
+
+Continue by installing the Cumulative Update
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">dism</span> /online <span style="color: #a4df2d">/add-package</span> /packagepath=C:\Windows10.0-KB4528760-x64_PSFX.cab
+</pre>
+
+</div>
+
+</div>
+
+Once the Cumulative Update has finished installing, it will prompt for a reboot. Reboot a second time after Windows boots up. The last step concerning updates is to clear the Windows Update cache:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">dism</span> /online <span style="color: #a4df2d">/Cleanup-Image</span> /StartComponentCleanup
+</pre>
+
+</div>
+
+</div>
+
+<div class="comment-vertical">
+
+Sometimes the progress bar hangs in the command prompt; it will update if you type on the keyboard. Use the arrow keys since that will not put text on the screen. Cleaning up the cache currently takes longer than installing updates.
+
+</div>
+
+### Install the Media Feature Pack
+
+Adding the Media Feature Pack allows for the playback of some embedded HTML5 web videos. [Firefox](https://support.mozilla.org/en-US/kb/fix-video-audio-problems-firefox-windows?as=u&utm_source=inproduct), for example, will misbehave if this particular content is attempted to be played, and will indicate to the user that the pack needs to be installed. Other media intensive applications are also affected.
+
+Download the Media Feature Pack from the [Microsoft Software Download Service](https://www.microsoft.com/en-us/software-download/mediafeaturepack)
+
+Firstly, extract the desired .cab file from the .msu file:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">expand</span> <span style="color: #a4df2d">-F</span><span style="color: #f2246e">:*</span> <MFP .msu file> <dest>
+</pre>
+
+</div>
+
+</div>
+
+Copy the resulting <span class="code">.cab</span> file to the root of the C: drive, or a location of your choice, then install offline update, again using an elevated command prompt:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">dism</span> /online <span style="color: #a4df2d">/add-package</span> /packagepath=<path to .cab>
+</pre>
+
+</div>
+
+</div>
+
+## Cleaning-Up Basic UI Elements
+
+Simplifying the UI and removing extraneous visual features is one of the critical aspects of the amelioration process (as well as ensuring that certain subsequently damaged and/or non-responsive features are pulled from the interface). The following tasks need to be undertaken before the amelioration and ameliorate scripts are executed. Given the various extraneous and difficult to describe UI elements to be navigated for these procedures, videos have also been added to help document these basic tasks.
+
+<div class="comment-vertical">
+
+Note that although these tasks may appear simple, they need to be undertaken before the amelioration or ameliorate scripts are executed.
+
+</div>
+
+### Cleaning-up the Start Menu and Taskbar
+
+Windows 10 ships with very confusing and misguided functionality and features implemented by default in the taskbar. These can and should be removed manually, aiding in simplifying the UI. Note that most of these features will be unavailable once the amelioration script is executed. The Start Menu tiles (application links) are being removed now, for this very reason. Attempting to remove them later may actually not work.
+
+<div>
+
+<div style="font-size: 12pt;  padding-top: 10px;">**Video: Cleaning up the Start Menu and Taskbar**  
+Remove all tiles from the Start Menu and all links except for Windows Explorer from the taskbar. Set the taskbar to never combine and set the systemtray to show all icons.</div>
+
+</div>
+
+## Install OpenSSH server (optional)
+
+Build 1903 of Windows 10 allows for native integration of an OpenSSH server, sanctioned by Microsoft, with the OpenSSH client coming pre-installed on Pro editions of the software. Installation of the server will be accomplished offline, using the manual steps described on the official project's [github](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH) page:
+
+<div class="comment-vertical">
+
+Enabling the SSH server will add an attack vector to your machine. Please keep this in mind when enabling this feature!
+
+</div>
+
+Download the latest build of OpenSSH. For a list of the latest releases follow [this link](https://github.com/PowerShell/Win32-OpenSSH/releases/).  
+(We used <span class="code">v8.1.0.0p1-Beta</span> at the time of this guide)
+
+Extract contents of the latest build to <span class="code">C:\Program Files\OpenSSH</span>
+
+<div class="comment-vertical">
+
+Make sure the binary location has Write permissions to just the SYSTEM and Administrator groups. Authenticated users should only have Read and Execute.
+
+</div>
+
+In an elevated Powershell console, run the following:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">powershell.exe</span> <span style="color: #a4df2d">-ExecutionPolicy</span> Bypass -File install-sshd.ps1
+</pre>
+
+</div>
+
+</div>
+
+Open the firewall for sshd.exe to allow inbound SSH connections:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)'   
+-Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+</pre>
+
+</div>
+
+</div>
+
+<div class="comment-vertical">Changing the SSH port to a port above 40000 will provide a small increase in security while on public networks.</div>
+
+Start <span class="code">sshd</span> in an elevated command prompt:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> net start sshd
+</pre>
+
+</div>
+
+</div>
+
+<div class="comment-vertical">Note that this will automatically generate host keys under <span class="code">%programdata%\ssh</span> if they don't already exist. Because of this, we can't distribute AME with the server already enabled, as all of the computers with AME would have identical public and private keys for SSH.</div>
+
+The <span class="code">sshd</span> service should also be configured to auto-start at boot. In an elevated PowerShell window type:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">Set-Service</span> sshd <span style="color: #a4df2d">-StartupType</span> Automatic
+</pre>
+
+</div>
+
+</div>
+
+## Run Amelioration Script (Pre)
+
+At this stage we are ready to begin the amelioration process, which is structured into various phases due to the nature of Windows 10's self-updating and healing capabilities. The amelioration script, the Windows-side component of the AME process, is responsible for disabling services, applying individual registry hacks, modifying various configuration files, and installing software. Consequently, this script has both options to be executed before and after the proceeding [deletion process](#snd).
+
+The script has been heavily commented to reasonably document each operation.  
+Download the script:
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px;">
+
+<div id="minimal_title" class="download-prompt-wrapper">
+
+**Windows 10 Amelioration script**
+
+Windows-side component for the amelioration process, heavily commented for documentation purposes.
+
+</div>
+
+</div>
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px; margin-bottom: 0px">
+
+<div id="minimal_button" class="download-prompt-wrapper-2">
+
+<center>[<button class="button4 button2">Download</button>](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/amelioration_1903_2020.03.06.bat)
+
+BAT File 34 KiB [ [SHA256 Sum](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/amelioration_1903_2020.03.06.bat.sha256) ]  
+Version 2020-03-06
+
+</center>
+
+</div>
+
+</div>
+
+Run the <span class="code">amelioration_2019-12-14.bat</span> as Administrator
+
+Once opened, run option 1 <span class="code">Pre-Amelioration</span> from the main menu. This may take several minutes to complete.
+
+<div class="comment-vertical">
+
+The script will likely generate errors; this is fine, it is just unable to remove some of the built-in apps with PowerShell.
+
+</div>
+
+Run option 3: <span class="code">User Permissions</span>, which will open the <span class="code">netplwiz</span> GUI for configuring Windows user permissions:
+
+*   Reset password for <span class="code">Administrator</span> account
+*   Double click <span class="code">user</span> account, go to the Group Membership tab and select <span class="code">Standard User</span>
+*   Click OK when finished. You will be asked to sign out, click Yes.
+
+After logging back in, change the password of the default user.  
+In an elevated command prompt, type the following:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">net</span> <span style="color: #a4df2d">user</span> user <span style="color: #f2246e">*</span>
+</pre>
+
+</div>
+
+</div>
+
+## Run Ameliorate Script (Linux Required)
+
+To assure that our changes are permanent, we need to remove Windows Update and its self-healing ability. This cannot be done within the running system because of Windows file permissions and repair operations. Another operating system, preferably a Linux distribution, is required for this step.
+
+The Ameliorate script makes heavy use of filesystem fuzzing search operations to effectively find and remove all files classified under specific naming conventions by Microsoft and pipes these paths to delete commands. As noted above, modifying the Windows filesystem from Linux allows us the luxury of ignoring filesystem permissions and ensures that Windows cannot re-patch these files before we reboot. This process enables the complete deletion of all relevant binaries from the system. In addition to the removal process the script also generates a recovery script to restore all of the removed Windows files from backup.
+
+The script is written in bash, and commented to reasonably document various deleted components.  
+Download the script:
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px;">
+
+<div id="minimal_title" class="download-prompt-wrapper">
+
+**Linux Ameliorate script**
+
+Linux-side component for the amelioration process, commented for documentation purposes.
+
+</div>
+
+</div>
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px; margin-bottom: 0px">
+
+<div id="minimal_button" class="download-prompt-wrapper-2">
+
+<center>[<button class="button4 button2">Download</button>](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/ameliorate_1903_2020.03.06.sh)
+
+SH File 14 KiB [ [SHA256 Sum](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/ameliorate_1903_2020.03.06.sh.sha256) ]  
+Version 2020-03-06
+
+</center>
+
+</div>
+
+</div>
+
+Boot into Linux and mount your Windows drive.  
+Place <span class="code">ameliorate_1903_2020-01-18.sh</span> in the root directory of your Windows drive, and execute it with root permissions:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">$</span> sudo <span style="color: #a4df2d">./ameliorate_1903_2020-01-18.sh</span>
+</pre>
+
+</div>
+
+</div>
+
+<div class="comment-vertical">
+
+The script will generate ten errors, two for OfficeHub and eight for MicrosoftEdge. This is due to permissions. This seems to be fine and neither of the programs can run. For unknown reasons, there are multiple copies of Windows files all over the folder structure of Windows 10\. The ones that actually run Microsoft Edge are successfully removed.
+
+</div>
+
+Once the script has finished, boot back into Windows to continue.
+
+## Run Amelioration Script (Post)
+
+Due to the deletion process, at this stage, Windows 10 lacks even basic software, such as a web browser or media player. This process installs the [chocolatey package manager](https://chocolatey.org/) and a selection of basic sensible software.
+
+Once again, run the <span class="code">amelioration_2019-12-14.bat</span> as Administrator and enable internet access.
+
+Run option 2 <span class="code">Post-Amelioration</span> from the main menu.
+
+## Setup Classic-Shell
+
+The amelioration process, with respect to the disabling and/or outright deletion of certain binaries, such as Cortana, cripples some Windows functionality which needs to be replaced. The Start Menu is left handicapped with disabled search functionality and a few non-functional app links. Thankfully there are open-source projects such as classic-shell, aiming to not only replace the Start Menu with a separate executable, but also to be more functionally similar to the Start Menu from Windows 7 or earlier.
+
+The following describes the steps to configure classic-shell to the state used in AME:
+
+<div>
+
+<div style="font-size: 12pt;  padding-top: 10px;">**Video: Configuring Start Menu replacement Classic-Shell**  
+While most of these configurations are optional, we have tried to align classic-shell with sensible theming. These are the settings applied in the AME release.</div>
+
+</div>
+
+Enable: **Show all settings**, go to the **Skin** tab:
+
+*   Select <span class="code">Midnight</span> from the skin drop-down menu
+*   Select <span class="code">More transparent</span> from the Skin options
+
+Go to the **Main Menu** tab:
+
+*   Uncheck <span class="code">Show Metro apps</span> (apps have been disabled)
+*   Uncheck <span class="code">Show recent Metro apps</span> (see above)
+*   Set <span class="code">Max recent programs</span> to <span class="code">15</span> (or any other number you'd like)
+*   Uncheck <span class="code">Enable hybrid shutdown</span> for good measure
+
+Go to the **Menu Look** tab:
+
+*   Check <span class="code">Override glass color</span> (this is optional)
+*   Set Menu glass color to <span class="code">000000</span> (or any other color you'd like)
+
+## Modify Windows 10 Explorer
+
+Microsoft has opted to ship an arguably very poorly designed UI, in terms of ease of access and clarity, with Windows 10\. The lack of any defined contrasts and the burying of useful elements, which have been obscured by a confusing ribbon system, is especially apparent in <span class="code">Windows Explorer</span>, a very frequented application.
+
+In light of this <span class="code">OldNewExplorer</span> is an excellent project to integrate.
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px;">
+
+<div id="minimal_title" class="download-prompt-wrapper">
+
+**Old New Explorer**
+
+Windows 10 shell extension which can undo "improvements" to file browsing made in newer Windows version.
+
+</div>
+
+</div>
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px; margin-bottom: 0px">
+
+<div id="minimal_button" class="download-prompt-wrapper-2">
+
+<center>[<button class="button4 button2">Download</button>](files/OldNewExplorer.rar)
+
+RAR File 278 KiB [ [Source/Mirror](https://msfn.org/board/topic/170375-oldnewexplorer-118/) ]  
+Version 1.1.8
+
+</center>
+
+</div>
+
+</div>
+
+<div class="comment-vertical">Do not run this application as administrator. It will prompt you</div>
+
+Use the following settings:
+
+*   Click Install and follow the dialogs
+*   Uncheck everything
+*   Check <span class="code">Use classical drive grouping in This PC</span>
+*   Check <span class="code">Use libraries; hide folders from This PC</span>
+*   Check <span class="code">Use command bar instead of Ribbon</span>
+*   Check <span class="code">Hide caption text in File Explorer windows</span>
+*   Check <span class="code">Hide caption icon in File Explorer windows</span>
+*   Check <span class="code">Show details pane on the bottom</span>
+*   Appearance style set to <span class="code">Default style (Windows 7 style / skin style)</span>
+*   Status bar style set to <span class="code">Default style (white)</span>
+*   Check <span class="code">Show status bar</span>
+
+## Install and Configure Cygwin
+
+Get Cygwin, _"a Unix-like environment and command-line interface for Microsoft Windows"_ from their [website](https://cygwin.com/) and install <span class="code">lynx</span> with it, so that <span class="code">apt-cyg</span> can be used to get additional packages for Cygwin. Since the Windows Subsystem for Linux (WSL) will be unavailable in AME, Cygwin is a great addition to the Windows desktop. It allows the use of bash natively, as well as various other ported Unix and Linux tools.
+
+<div>
+
+<div style="font-size: 12pt;  padding-top: 10px;">**Video: Install and configure Cygwin with apt-cyg**  
+This video covers the complete guide on how to install and configure Cygwin with apt-cyg, as well as other AME specific modifications.</div>
+
+</div>
+
+During the install, select all the default options until the **Select Packages** dialog is reached.
+
+Search for each of the following applications and mark them to be installed. Searching does not display a list of packages; instead, it shows the category that each application is in. To see the packages, you need to expand the category by clicking the **plus symbol**. The packages you should install are: <span class="code">lynx</span> and <span class="code">nano</span>
+
+Follow through the rest of the installation wizard normally.
+
+Move the provided <span class="code">.bashrc</span> to <span class="code">C:\cygwinx64\home\user\</span> Create the user folder if it does not exist already. The provided <span class="code">bashrc</span> file does not have the dot in front of it. You will have to rename it with cygwin:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">$</span> <span style="color: #5ec5d7">mv</span><span style="color: #a4df2d"></span> bashrc .bashrc
+</pre>
+
+</div>
+
+</div>
+
+To install <span class="code">apt-cyg</span> type the following commands in an elevated Cygwin shell:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">$</span> <span style="color: #5ec5d7">lynx</span> <span style="color: #a4df2d">-source</span> rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg  
+
+<span class="unselectable">$</span> <span style="color: #5ec5d7">install</span> <span style="color: #a4df2d">apt-cyg</span> /bin</pre>
+
+</div>
+
+</div>
+
+## Run the latest hardentools from Security Without Borders
+
+Due to Windows 10's ongoing security fiasco and surfacing issues, not to mention AME's commitment to basic levels of security, certain functionality needs to be modified and/or accommodated for along those lines. In addition to the adjustments made by the <span class="code">amelioration script</span>, [Hardentools](https://github.com/securitywithoutborders/hardentools), an open-source project from Security Without Borders, provides an optimal inclusion.
+
+Run the latest executable with administrator privileges:
+
+1.  Uncheck the <span class="code">Powershell and cmd.exe</span> box (unless desired)
+2.  Click Harden!
+3.  Click OK when finished
+
+## Set Application Defaults
+
+The application defaults for Windows 10 1903 can be set by using either the Windows Settings App, or by a more tedious, but more reliable manual process. The manual process was created due to the 1809 release of Windows 10 containing a feature regression which caused the Windows Settings App method for setting application defaults to be broken. The 1903 release of Windows 10 appears to have fixed this issue, but the manual guide is included as it is known to always set defaults successfully.
+
+Setting the default browser, Music player and Video player are relatively simple one-off changes which need to be done using the Windows Settings App. Open the Windows Settings App, click Apps, then under "Web browser" select Firefox, do the same for "Music player" and "Video player" only this time selecting VLC.
+
+For the rest of the defaults start by making empty files with the desired file type. You can use the bash script below to generate the files. For example, for gif files; right click the generated file <span class="code">gif.gif</span>, click Properties, click the Change button next to "Opens with:", then navigate to the executable that you would like to handle that file type.
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px;">
+
+<div id="minimal_title" class="download-prompt-wrapper">
+
+**create_empty_files.sh**
+
+A simple bash script to generate empty files to set application defaults.
+
+</div>
+
+</div>
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px; margin-bottom: 0px">
+
+<div id="minimal_button" class="download-prompt-wrapper-2">
+
+<center>[<button class="button4 button2">Download</button>](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/create_empty_files.sh)
+
+SH File 192 Bytes [ [SHA256](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/create_empty_files.sh.sha256) ]  
+Version 2020-03-06
+
+</center>
+
+</div>
+
+</div>
+
+### File types
+
+*   <span class="code">.doc</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.docx</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.gif</span> - JPEGView
+*   <span class="code">.flac</span> - VLC
+*   <span class="code">.mkv</span> - VLC
+*   <span class="code">.pdf</span> - ONLYOFFICE Desktop Editors/Firefox
+*   <span class="code">.pps</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.ppsx</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.ppt</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.pptx</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.xls</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.xlsx</span> - ONLYOFFICE Desktop Editors
+
+### File Type Handler Locations
+
+*   JPEGView - <span class="code">C:\ProgramData\chocolatey\lib\jpegview\tools\app\JPEGView.exe</span>
+*   ONLYOFFICE Desktop Editors - <span class="code">C:\Program Files\ONLYOFFICE\DesktopEditors\DesktopEditors.exe</span>
+*   VLC - <span class="code">C:\Program Files\VideoLAN\VLC\vlc.exe</span>
+
+## Setting the default wallpaper for desktop and lock screen
+
+### Modifying the default Wallpaper
+
+The goal of this section is to demonstrate how to modify the default wallpaper on a system level, replacing and/or adding the default GUI selection. The commands in this section will require an elevated command prompt.
+
+First take basic permission ownership over the wallpaper you want to replace:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">takeown</span> <span style="color: #a4df2d">/f</span> C:\Windows\Web\Wallpaper\Windows\img0.jpg
+</pre>
+
+</div>
+
+</div>
+
+Modify access control for the default wallpaper:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">icacls</span> C:\Windows\Web\Wallpaper\Windows\img0.jpg <span style="color: #a4df2d">/reset</span>
+</pre>
+
+</div>
+
+</div>
+
+Replace the wallpaper with your own specified file:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">copy</span> <your wallpaper> C:\Windows\Web\Wallpaper\Windows\img0.jpg<span style="color: #a4df2d"></span>
+</pre>
+
+</div>
+
+</div>
+
+After this, reboot, and go to <span class="code">Settings => Personalization</span> and select your wallpaper.
+
+### Modifying the default Lock Screen Image
+
+The goal of this section is to demonstrate how to modify the default lockscreen image on a system level, replacing and/or adding the default GUI selection. The commands in this section will require an elevated command prompt.
+
+First enable the lock screen with a <span class="code">reg add</span> command:
+
+<div class="comment-code">
+
+<div style="overflow:auto;overflow-wrap: break-word;word-break: break-all;width:auto;padding:.2em .6em;"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">reg</span> <span style="color: #a4df2d">add</span> "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization" /v NoLockScreen /t REG_DWORD /d 0 /f</div>
+
+</div>
+
+Run to enable the lock screen image on the sign-in window:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">reg</span> <span style="color: #a4df2d">add</span> "HKLM\SOFTWARE\Policies\Microsoft\Windows\System /v DisableLogonBackgroundImage" /t REG_DWORD /d 0 /f</div>
+
+</div>
+
+Take basic permission ownership over the image you want to replace:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">takeown</span> <span style="color: #a4df2d">/f</span> C:\windows\WEB\wallpaper\Screen\img100.jpg
+</pre>
+
+</div>
+
+</div>
+
+Modify access control for the default lock screen image:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">icacls</span> C:\windows\WEB\wallpaper\Windows\img100.jpg <span style="color: #a4df2d">/reset</span>
+</pre>
+
+</div>
+
+</div>
+
+Replace the lock screen image with your own specified file:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">copy</span> <your image> C:\Windows\WEB\wallpaper\Windows\img100.jpg<span style="color: #a4df2d"></span>
+</pre>
+
+</div>
+
+</div>
+
+After this, go to <span class="code">Personalization => lockscreen</span> and select your image. It should now show your personal wallpaper as the first image from the selection (far left).
+
+To set the wallpaper to another image, only the registry edit and the <span><span class="code">copy</span> commands will be needed as none of permissions need to be changed.</span>
+
+This marks the end of the AME guide, if you have any questions or concerns please place a message in the group chat, otherwise enjoy using your ameliorated Windows 10 install.
+
+</dp></div>
+
+<div class="body">  
+
+# Windows 10 AME Documentation <span class="badge" style="bottom: 7px; left: 3px;">New!</span>
+
+<aside>Version 1903 Dated 2020-02-06</aside>
+
+<div class="comment-vertical">
+
+**Note about this article**  
+A packaged version of this guide, for offline use, is available <a style="" href="">here</a> [Not yet available]
+
+</div>
+
+The goal of the AME project is to provide a stable and non-intrusive build of Windows 10, without sacrificing usability and Win32 compatibility for the majority of mainstream applications. This includes the avoidance and riddance of privacy infringing automated data collection services, central to Microsoft’s strategy for the Windows 10 operating system.
+
+This page provides a complete step-by-step description of how AME images are mastered based on Windows 10 build 1903 with minor proceeding updates, defining a complete documentation of this project.
+
+While large portions of this process have been automated using various scripts and Linux command line utilities, a large majority requires manual effort, with many of the steps often producing differing and sometimes non-predictable results from instance to instance, increasing the difficulty of this procedure. As such, sections where abnormal behavior may occur have been appropriately highlighted.
+
+<dp>It is also recommended that anyone attempting to reproduce the steps in this guide be moderately versed with Linux and consequently also not afraid of using the command line.
+
+## Contents
+
+1.  [Windows 10 1903 Installation](#install)
+2.  [Updating Windows](#updates)
+3.  [Cleanin-Up Basic UI Elements](#basic_cleanup)
+4.  [Install OpenSSH server (optional)](#openssh)
+5.  [Run Amelioration Script (Pre)](#ame_pre)
+6.  [Linux: Run Ameliorate Script](#snd)
+7.  [Run Amelioration Script (Post)](#ame_post)
+8.  [Setup Classic-Shell](#classicshell)
+9.  [Modify Windows Explorer](#explorer)
+10.  [Run the latest hardentools from Security Without Borders](#hardentools)
+11.  [Set Application Defaults](#defaults)
+12.  [Setting the default wallpaper for desktop and lock screen](#wallpaper)
+
+## Installation of Windows 10 1903
+
+Firstly, you will need to grab a clean ISO of Windows 10 build 1903\. This can be done from Microsoft’s website directly, or via the use of third party tools, such as the [Microsoft Windows and Office ISO Download Tool](https://www.heidoc.net/joomla/technology-science/microsoft/67-microsoft-windows-and-office-iso-download-tool).
+
+During installation, particularly the next few steps, it is necessary to disconnect your target machine from the Internet. Burn the image to a USB flash drive or attach it in your VM manager to boot the installation medium. A partition size of at least 32GB is required.
+
+You will be asked to provide a product key.  
+When asked, use <span class="code">2B87N-8KFHP-DKV6R-Y2C8J-PKCKT</span>, which is a Generic License key for Windows 10 Pro N RTM. If your hardware has already been activated with a legitimate key, or if you have acquired your own, please enter your key instead. This generic key does not activate Windows; rather, it only allows for the installation to continue.
+
+<div class="comment-vertical">
+
+If you purchased your key from a third party, you may want to activate the key using a vanilla Windows 10 Installation on your machine before proceeding with AME, as the key will be tied to your motherboard and unable to be used again. Third party sellers sometimes check for this so they can make more money by reselling the key if you did not use it within a short time from purchasing it.
+
+</div>
+
+### Post Install Procedure - After the initial installation perform the following steps:
+
+The installation and initial setup proceeds mostly normally, with the arguably placebo-trier toggles for privacy being disabled for good measure. **It is again very vital to mention that no internet connection be established during the entire installation!**
+
+<div>
+
+<div style="font-size: 12pt;  padding-top: 10px;">**Video: Windows 10 Post Install**  
+During the initial post-install setup, select your default language, skip any network setup (it will ask twice, click no on the second prompt), and add a user as a local account. This user will be the user which does not have administrator privileges. The username can be anything you want, but on AME releases the username is simply "user".</div>
+
+</div>
+
+## Extracting and Installing Updates
+
+Before further changing the operating system, we recommend installing Microsoft’s security updates. Both the Servicing Stack Update (SSU) and Cumulative Updates are required to properly install updates. The Cumulative Update includes all updates released since the initial release of 1903\. This means that only the latest Cumulative Update is required to obtain updates included in prior Cumulative Updates. The correct SSU for the Cumulative Update package can be found in the **"How to get this update"** section of each Cumulative Update page. For a full list of update options, as well as updates proceeding this guide, follow the Microsoft link [here](https://support.microsoft.com/en-us/help/4528760). The latest AME release uses SSU [KB4528759](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4528759) in conjunction with Cumulative Update [KB4528760](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4528760).
+
+<div class="comment-vertical">
+
+Proceed at your own risk when installing updates outside of the scope of this guide, as amelioration features with respect to privacy may be jeopardized.
+
+</div>
+
+To install an update, use Microsoft’s Deployment Image Servicing and Management (DISM) tool.
+
+Firstly, extract the desired .cab file from the .msu files:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">expand</span> <span style="color: #a4df2d">-F</span><span style="color: #f2246e">:*</span> <.msu file> <dest>
+</pre>
+
+</div>
+
+</div>
+
+The SSU will need to be installed prior to the Cumulative Update, but the DISM command structure is identical. Just point to the correct .cab file.
+
+Copy the <span class="code">Windows10.0-KB4528759-x64.cab</span> and <span class="code">Windows10.0-KB4528760_PSFX.cab</span> files to the root of the C: drive, or a location of your choosing, and run the following commands from an elevated command prompt:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">dism</span> /online <span style="color: #a4df2d">/add-package</span> /packagepath=C:\Windows10.0-KB4528759-x64.cab
+</pre>
+
+</div>
+
+</div>
+
+Reboot before installing the Cumulative Update
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">shutdown</span> /r /t 0
+</pre>
+
+</div>
+
+</div>
+
+Continue by installing the Cumulative Update
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">dism</span> /online <span style="color: #a4df2d">/add-package</span> /packagepath=C:\Windows10.0-KB4528760-x64_PSFX.cab
+</pre>
+
+</div>
+
+</div>
+
+Once the Cumulative Update has finished installing, it will prompt for a reboot. Reboot a second time after Windows boots up. The last step concerning updates is to clear the Windows Update cache:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">dism</span> /online <span style="color: #a4df2d">/Cleanup-Image</span> /StartComponentCleanup
+</pre>
+
+</div>
+
+</div>
+
+<div class="comment-vertical">
+
+Sometimes the progress bar hangs in the command prompt; it will update if you type on the keyboard. Use the arrow keys since that will not put text on the screen. Cleaning up the cache currently takes longer than installing updates.
+
+</div>
+
+### Install the Media Feature Pack
+
+Adding the Media Feature Pack allows for the playback of some embedded HTML5 web videos. [Firefox](https://support.mozilla.org/en-US/kb/fix-video-audio-problems-firefox-windows?as=u&utm_source=inproduct), for example, will misbehave if this particular content is attempted to be played, and will indicate to the user that the pack needs to be installed. Other media intensive applications are also affected.
+
+Download the Media Feature Pack from the [Microsoft Software Download Service](https://www.microsoft.com/en-us/software-download/mediafeaturepack)
+
+Firstly, extract the desired .cab file from the .msu file:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">expand</span> <span style="color: #a4df2d">-F</span><span style="color: #f2246e">:*</span> <MFP .msu file> <dest>
+</pre>
+
+</div>
+
+</div>
+
+Copy the resulting <span class="code">.cab</span> file to the root of the C: drive, or a location of your choice, then install offline update, again using an elevated command prompt:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">dism</span> /online <span style="color: #a4df2d">/add-package</span> /packagepath=<path to .cab>
+</pre>
+
+</div>
+
+</div>
+
+## Cleaning-Up Basic UI Elements
+
+Simplifying the UI and removing extraneous visual features is one of the critical aspects of the amelioration process (as well as ensuring that certain subsequently damaged and/or non-responsive features are pulled from the interface). The following tasks need to be undertaken before the amelioration and ameliorate scripts are executed. Given the various extraneous and difficult to describe UI elements to be navigated for these procedures, videos have also been added to help document these basic tasks.
+
+<div class="comment-vertical">
+
+Note that although these tasks may appear simple, they need to be undertaken before the amelioration or ameliorate scripts are executed.
+
+</div>
+
+### Cleaning-up the Start Menu and Taskbar
+
+Windows 10 ships with very confusing and misguided functionality and features implemented by default in the taskbar. These can and should be removed manually, aiding in simplifying the UI. Note that most of these features will be unavailable once the amelioration script is executed. The Start Menu tiles (application links) are being removed now, for this very reason. Attempting to remove them later may actually not work.
+
+<div>
+
+<div style="font-size: 12pt;  padding-top: 10px;">**Video: Cleaning up the Start Menu and Taskbar**  
+Remove all tiles from the Start Menu and all links except for Windows Explorer from the taskbar. Set the taskbar to never combine and set the systemtray to show all icons.</div>
+
+</div>
+
+## Install OpenSSH server (optional)
+
+Build 1903 of Windows 10 allows for native integration of an OpenSSH server, sanctioned by Microsoft, with the OpenSSH client coming pre-installed on Pro editions of the software. Installation of the server will be accomplished offline, using the manual steps described on the official project's [github](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH) page:
+
+<div class="comment-vertical">
+
+Enabling the SSH server will add an attack vector to your machine. Please keep this in mind when enabling this feature!
+
+</div>
+
+Download the latest build of OpenSSH. For a list of the latest releases follow [this link](https://github.com/PowerShell/Win32-OpenSSH/releases/).  
+(We used <span class="code">v8.1.0.0p1-Beta</span> at the time of this guide)
+
+Extract contents of the latest build to <span class="code">C:\Program Files\OpenSSH</span>
+
+<div class="comment-vertical">
+
+Make sure the binary location has Write permissions to just the SYSTEM and Administrator groups. Authenticated users should only have Read and Execute.
+
+</div>
+
+In an elevated Powershell console, run the following:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">powershell.exe</span> <span style="color: #a4df2d">-ExecutionPolicy</span> Bypass -File install-sshd.ps1
+</pre>
+
+</div>
+
+</div>
+
+Open the firewall for sshd.exe to allow inbound SSH connections:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)'   
+-Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+</pre>
+
+</div>
+
+</div>
+
+<div class="comment-vertical">Changing the SSH port to a port above 40000 will provide a small increase in security while on public networks.</div>
+
+Start <span class="code">sshd</span> in an elevated command prompt:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> net start sshd
+</pre>
+
+</div>
+
+</div>
+
+<div class="comment-vertical">Note that this will automatically generate host keys under <span class="code">%programdata%\ssh</span> if they don't already exist. Because of this, we can't distribute AME with the server already enabled, as all of the computers with AME would have identical public and private keys for SSH.</div>
+
+The <span class="code">sshd</span> service should also be configured to auto-start at boot. In an elevated PowerShell window type:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">Set-Service</span> sshd <span style="color: #a4df2d">-StartupType</span> Automatic
+</pre>
+
+</div>
+
+</div>
+
+## Run Amelioration Script (Pre)
+
+At this stage we are ready to begin the amelioration process, which is structured into various phases due to the nature of Windows 10's self-updating and healing capabilities. The amelioration script, the Windows-side component of the AME process, is responsible for disabling services, applying individual registry hacks, modifying various configuration files, and installing software. Consequently, this script has both options to be executed before and after the proceeding [deletion process](#snd).
+
+The script has been heavily commented to reasonably document each operation.  
+Download the script:
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px;">
+
+<div id="minimal_title" class="download-prompt-wrapper">
+
+**Windows 10 Amelioration script**
+
+Windows-side component for the amelioration process, heavily commented for documentation purposes.
+
+</div>
+
+</div>
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px; margin-bottom: 0px">
+
+<div id="minimal_button" class="download-prompt-wrapper-2">
+
+<center>[<button class="button4 button2">Download</button>](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/amelioration_1903_2020.03.06.bat)
+
+BAT File 34 KiB [ [SHA256 Sum](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/amelioration_1903_2020.03.06.bat.sha256) ]  
+Version 2020-03-06
+
+</center>
+
+</div>
+
+</div>
+
+Run the <span class="code">amelioration_2019-12-14.bat</span> as Administrator
+
+Once opened, run option 1 <span class="code">Pre-Amelioration</span> from the main menu. This may take several minutes to complete.
+
+<div class="comment-vertical">
+
+The script will likely generate errors; this is fine, it is just unable to remove some of the built-in apps with PowerShell.
+
+</div>
+
+Run option 3: <span class="code">User Permissions</span>, which will open the <span class="code">netplwiz</span> GUI for configuring Windows user permissions:
+
+*   Reset password for <span class="code">Administrator</span> account
+*   Double click <span class="code">user</span> account, go to the Group Membership tab and select <span class="code">Standard User</span>
+*   Click OK when finished. You will be asked to sign out, click Yes.
+
+After logging back in, change the password of the default user.  
+In an elevated command prompt, type the following:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">net</span> <span style="color: #a4df2d">user</span> user <span style="color: #f2246e">*</span>
+</pre>
+
+</div>
+
+</div>
+
+## Run Ameliorate Script (Linux Required)
+
+To assure that our changes are permanent, we need to remove Windows Update and its self-healing ability. This cannot be done within the running system because of Windows file permissions and repair operations. Another operating system, preferably a Linux distribution, is required for this step.
+
+The Ameliorate script makes heavy use of filesystem fuzzing search operations to effectively find and remove all files classified under specific naming conventions by Microsoft and pipes these paths to delete commands. As noted above, modifying the Windows filesystem from Linux allows us the luxury of ignoring filesystem permissions and ensures that Windows cannot re-patch these files before we reboot. This process enables the complete deletion of all relevant binaries from the system. In addition to the removal process the script also generates a recovery script to restore all of the removed Windows files from backup.
+
+The script is written in bash, and commented to reasonably document various deleted components.  
+Download the script:
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px;">
+
+<div id="minimal_title" class="download-prompt-wrapper">
+
+**Linux Ameliorate script**
+
+Linux-side component for the amelioration process, commented for documentation purposes.
+
+</div>
+
+</div>
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px; margin-bottom: 0px">
+
+<div id="minimal_button" class="download-prompt-wrapper-2">
+
+<center>[<button class="button4 button2">Download</button>](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/ameliorate_1903_2020.03.06.sh)
+
+SH File 14 KiB [ [SHA256 Sum](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/ameliorate_1903_2020.03.06.sh.sha256) ]  
+Version 2020-03-06
+
+</center>
+
+</div>
+
+</div>
+
+Boot into Linux and mount your Windows drive.  
+Place <span class="code">ameliorate_1903_2020-01-18.sh</span> in the root directory of your Windows drive, and execute it with root permissions:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">$</span> sudo <span style="color: #a4df2d">./ameliorate_1903_2020-01-18.sh</span>
+</pre>
+
+</div>
+
+</div>
+
+<div class="comment-vertical">
+
+The script will generate ten errors, two for OfficeHub and eight for MicrosoftEdge. This is due to permissions. This seems to be fine and neither of the programs can run. For unknown reasons, there are multiple copies of Windows files all over the folder structure of Windows 10\. The ones that actually run Microsoft Edge are successfully removed.
+
+</div>
+
+Once the script has finished, boot back into Windows to continue.
+
+## Run Amelioration Script (Post)
+
+Due to the deletion process, at this stage, Windows 10 lacks even basic software, such as a web browser or media player. This process installs the [chocolatey package manager](https://chocolatey.org/) and a selection of basic sensible software.
+
+Once again, run the <span class="code">amelioration_2019-12-14.bat</span> as Administrator and enable internet access.
+
+Run option 2 <span class="code">Post-Amelioration</span> from the main menu.
+
+## Setup Classic-Shell
+
+The amelioration process, with respect to the disabling and/or outright deletion of certain binaries, such as Cortana, cripples some Windows functionality which needs to be replaced. The Start Menu is left handicapped with disabled search functionality and a few non-functional app links. Thankfully there are open-source projects such as classic-shell, aiming to not only replace the Start Menu with a separate executable, but also to be more functionally similar to the Start Menu from Windows 7 or earlier.
+
+The following describes the steps to configure classic-shell to the state used in AME:
+
+<div>
+
+<div style="font-size: 12pt;  padding-top: 10px;">**Video: Configuring Start Menu replacement Classic-Shell**  
+While most of these configurations are optional, we have tried to align classic-shell with sensible theming. These are the settings applied in the AME release.</div>
+
+</div>
+
+Enable: **Show all settings**, go to the **Skin** tab:
+
+*   Select <span class="code">Midnight</span> from the skin drop-down menu
+*   Select <span class="code">More transparent</span> from the Skin options
+
+Go to the **Main Menu** tab:
+
+*   Uncheck <span class="code">Show Metro apps</span> (apps have been disabled)
+*   Uncheck <span class="code">Show recent Metro apps</span> (see above)
+*   Set <span class="code">Max recent programs</span> to <span class="code">15</span> (or any other number you'd like)
+*   Uncheck <span class="code">Enable hybrid shutdown</span> for good measure
+
+Go to the **Menu Look** tab:
+
+*   Check <span class="code">Override glass color</span> (this is optional)
+*   Set Menu glass color to <span class="code">000000</span> (or any other color you'd like)
+
+## Modify Windows 10 Explorer
+
+Microsoft has opted to ship an arguably very poorly designed UI, in terms of ease of access and clarity, with Windows 10\. The lack of any defined contrasts and the burying of useful elements, which have been obscured by a confusing ribbon system, is especially apparent in <span class="code">Windows Explorer</span>, a very frequented application.
+
+In light of this <span class="code">OldNewExplorer</span> is an excellent project to integrate.
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px;">
+
+<div id="minimal_title" class="download-prompt-wrapper">
+
+**Old New Explorer**
+
+Windows 10 shell extension which can undo "improvements" to file browsing made in newer Windows version.
+
+</div>
+
+</div>
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px; margin-bottom: 0px">
+
+<div id="minimal_button" class="download-prompt-wrapper-2">
+
+<center>[<button class="button4 button2">Download</button>](files/OldNewExplorer.rar)
+
+RAR File 278 KiB [ [Source/Mirror](https://msfn.org/board/topic/170375-oldnewexplorer-118/) ]  
+Version 1.1.8
+
+</center>
+
+</div>
+
+</div>
+
+<div class="comment-vertical">Do not run this application as administrator. It will prompt you</div>
+
+Use the following settings:
+
+*   Click Install and follow the dialogs
+*   Uncheck everything
+*   Check <span class="code">Use classical drive grouping in This PC</span>
+*   Check <span class="code">Use libraries; hide folders from This PC</span>
+*   Check <span class="code">Use command bar instead of Ribbon</span>
+*   Check <span class="code">Hide caption text in File Explorer windows</span>
+*   Check <span class="code">Hide caption icon in File Explorer windows</span>
+*   Check <span class="code">Show details pane on the bottom</span>
+*   Appearance style set to <span class="code">Default style (Windows 7 style / skin style)</span>
+*   Status bar style set to <span class="code">Default style (white)</span>
+*   Check <span class="code">Show status bar</span>
+
+## Install and Configure Cygwin
+
+Get Cygwin, _"a Unix-like environment and command-line interface for Microsoft Windows"_ from their [website](https://cygwin.com/) and install <span class="code">lynx</span> with it, so that <span class="code">apt-cyg</span> can be used to get additional packages for Cygwin. Since the Windows Subsystem for Linux (WSL) will be unavailable in AME, Cygwin is a great addition to the Windows desktop. It allows the use of bash natively, as well as various other ported Unix and Linux tools.
+
+<div>
+
+<div style="font-size: 12pt;  padding-top: 10px;">**Video: Install and configure Cygwin with apt-cyg**  
+This video covers the complete guide on how to install and configure Cygwin with apt-cyg, as well as other AME specific modifications.</div>
+
+</div>
+
+During the install, select all the default options until the **Select Packages** dialog is reached.
+
+Search for each of the following applications and mark them to be installed. Searching does not display a list of packages; instead, it shows the category that each application is in. To see the packages, you need to expand the category by clicking the **plus symbol**. The packages you should install are: <span class="code">lynx</span> and <span class="code">nano</span>
+
+Follow through the rest of the installation wizard normally.
+
+Move the provided <span class="code">.bashrc</span> to <span class="code">C:\cygwinx64\home\user\</span> Create the user folder if it does not exist already. The provided <span class="code">bashrc</span> file does not have the dot in front of it. You will have to rename it with cygwin:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">$</span> <span style="color: #5ec5d7">mv</span><span style="color: #a4df2d"></span> bashrc .bashrc
+</pre>
+
+</div>
+
+</div>
+
+To install <span class="code">apt-cyg</span> type the following commands in an elevated Cygwin shell:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">$</span> <span style="color: #5ec5d7">lynx</span> <span style="color: #a4df2d">-source</span> rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg  
+
+<span class="unselectable">$</span> <span style="color: #5ec5d7">install</span> <span style="color: #a4df2d">apt-cyg</span> /bin</pre>
+
+</div>
+
+</div>
+
+## Run the latest hardentools from Security Without Borders
+
+Due to Windows 10's ongoing security fiasco and surfacing issues, not to mention AME's commitment to basic levels of security, certain functionality needs to be modified and/or accommodated for along those lines. In addition to the adjustments made by the <span class="code">amelioration script</span>, [Hardentools](https://github.com/securitywithoutborders/hardentools), an open-source project from Security Without Borders, provides an optimal inclusion.
+
+Run the latest executable with administrator privileges:
+
+1.  Uncheck the <span class="code">Powershell and cmd.exe</span> box (unless desired)
+2.  Click Harden!
+3.  Click OK when finished
+
+## Set Application Defaults
+
+The application defaults for Windows 10 1903 can be set by using either the Windows Settings App, or by a more tedious, but more reliable manual process. The manual process was created due to the 1809 release of Windows 10 containing a feature regression which caused the Windows Settings App method for setting application defaults to be broken. The 1903 release of Windows 10 appears to have fixed this issue, but the manual guide is included as it is known to always set defaults successfully.
+
+Setting the default browser, Music player and Video player are relatively simple one-off changes which need to be done using the Windows Settings App. Open the Windows Settings App, click Apps, then under "Web browser" select Firefox, do the same for "Music player" and "Video player" only this time selecting VLC.
+
+For the rest of the defaults start by making empty files with the desired file type. You can use the bash script below to generate the files. For example, for gif files; right click the generated file <span class="code">gif.gif</span>, click Properties, click the Change button next to "Opens with:", then navigate to the executable that you would like to handle that file type.
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px;">
+
+<div id="minimal_title" class="download-prompt-wrapper">
+
+**create_empty_files.sh**
+
+A simple bash script to generate empty files to set application defaults.
+
+</div>
+
+</div>
+
+<div class="floating-box" style="vertical-align:top; margin-top: -40px; margin-bottom: 0px">
+
+<div id="minimal_button" class="download-prompt-wrapper-2">
+
+<center>[<button class="button4 button2">Download</button>](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/create_empty_files.sh)
+
+SH File 192 Bytes [ [SHA256](https://git.ameliorated.info/malte/scripts/releases/download/1903.2020.03.06/create_empty_files.sh.sha256) ]  
+Version 2020-03-06
+
+</center>
+
+</div>
+
+</div>
+
+### File types
+
+*   <span class="code">.doc</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.docx</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.gif</span> - JPEGView
+*   <span class="code">.flac</span> - VLC
+*   <span class="code">.mkv</span> - VLC
+*   <span class="code">.pdf</span> - ONLYOFFICE Desktop Editors/Firefox
+*   <span class="code">.pps</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.ppsx</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.ppt</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.pptx</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.xls</span> - ONLYOFFICE Desktop Editors
+*   <span class="code">.xlsx</span> - ONLYOFFICE Desktop Editors
+
+### File Type Handler Locations
+
+*   JPEGView - <span class="code">C:\ProgramData\chocolatey\lib\jpegview\tools\app\JPEGView.exe</span>
+*   ONLYOFFICE Desktop Editors - <span class="code">C:\Program Files\ONLYOFFICE\DesktopEditors\DesktopEditors.exe</span>
+*   VLC - <span class="code">C:\Program Files\VideoLAN\VLC\vlc.exe</span>
+
+## Setting the default wallpaper for desktop and lock screen
+
+### Modifying the default Wallpaper
+
+The goal of this section is to demonstrate how to modify the default wallpaper on a system level, replacing and/or adding the default GUI selection. The commands in this section will require an elevated command prompt.
+
+First take basic permission ownership over the wallpaper you want to replace:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">takeown</span> <span style="color: #a4df2d">/f</span> C:\Windows\Web\Wallpaper\Windows\img0.jpg
+</pre>
+
+</div>
+
+</div>
+
+Modify access control for the default wallpaper:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">icacls</span> C:\Windows\Web\Wallpaper\Windows\img0.jpg <span style="color: #a4df2d">/reset</span>
+</pre>
+
+</div>
+
+</div>
+
+Replace the wallpaper with your own specified file:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">copy</span> <your wallpaper> C:\Windows\Web\Wallpaper\Windows\img0.jpg<span style="color: #a4df2d"></span>
+</pre>
+
+</div>
+
+</div>
+
+After this, reboot, and go to <span class="code">Settings => Personalization</span> and select your wallpaper.
+
+### Modifying the default Lock Screen Image
+
+The goal of this section is to demonstrate how to modify the default lockscreen image on a system level, replacing and/or adding the default GUI selection. The commands in this section will require an elevated command prompt.
+
+First enable the lock screen with a <span class="code">reg add</span> command:
+
+<div class="comment-code">
+
+<div style="overflow:auto;overflow-wrap: break-word;word-break: break-all;width:auto;padding:.2em .6em;"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">reg</span> <span style="color: #a4df2d">add</span> "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization" /v NoLockScreen /t REG_DWORD /d 0 /f</div>
+
+</div>
+
+Run to enable the lock screen image on the sign-in window:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">reg</span> <span style="color: #a4df2d">add</span> "HKLM\SOFTWARE\Policies\Microsoft\Windows\System /v DisableLogonBackgroundImage" /t REG_DWORD /d 0 /f</div>
+
+</div>
+
+Take basic permission ownership over the image you want to replace:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">takeown</span> <span style="color: #a4df2d">/f</span> C:\windows\WEB\wallpaper\Screen\img100.jpg
+</pre>
+
+</div>
+
+</div>
+
+Modify access control for the default lock screen image:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">icacls</span> C:\windows\WEB\wallpaper\Windows\img100.jpg <span style="color: #a4df2d">/reset</span>
+</pre>
+
+</div>
+
+</div>
+
+Replace the lock screen image with your own specified file:
+
+<div class="comment-code">
+
+<div style=" overflow:auto;width:auto;padding:.2em .6em;">
+
+<pre style="margin: 0; line-height: 125%"><span class="unselectable">C:\></span> <span style="color: #5ec5d7">copy</span> <your image> C:\Windows\WEB\wallpaper\Windows\img100.jpg<span style="color: #a4df2d"></span>
+</pre>
+
+</div>
+
+</div>
+
+After this, go to <span class="code">Personalization => lockscreen</span> and select your image. It should now show your personal wallpaper as the first image from the selection (far left).
+
+To set the wallpaper to another image, only the registry edit and the <span><span class="code">copy</span> commands will be needed as none of permissions need to be changed.</span>
+
+This marks the end of the AME guide, if you have any questions or concerns please place a message in the group chat, otherwise enjoy using your ameliorated Windows 10 install.
+
+</dp></div>
