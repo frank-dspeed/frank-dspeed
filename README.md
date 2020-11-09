@@ -17,7 +17,7 @@
 | deno | 100% | a JS Runtime Written in Rust using V8
 | Stealify Chromium | 100% | NodeJS & Chromium Latest Running on the Same V8 Instance. with Optional GraalVM and JVM Support.
 | wasmer.io | 100% | a WASM Runtime Written in Rust with a big Success Story and Ecosystem.
-| WebStream Protocol| 43% | RealTime One To Many Streaming based on torrent & webtrorrent
+| <a href="https://github.com/direktspeed/webstream">WebStream Protocol</a>| 43% | RealTime One To Many Streaming based on torrent & webtrorrent
 | WebBiTorrent Protocol | 13% | Bidirectional RealTime Streaming via Many P2P Units in between Maybe Darknet 2.0?
 | Deployment | 100% | I am Addicted to Optimization of the general Deployment Processes needed.
 | Operation | 100% | I Want to Make it Simple again even on Scale with less Human Intervention.
