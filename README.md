@@ -3,21 +3,28 @@
 
 | Projects & Topic | MVP Done in % | Details
 | ------------- | ------------- | ------------- | 
+| <a href="https://github.com/direktspeed/we-design-future">>direktspeed/we-design-future</a> | 0% | High Level Roadmap | 
+| <a href="https://github.com/direktspeed/was-browser">direktspeed/was-browser</a> & was | 45% | defining a Platform like Open Pwa but make it work only with a single extensible WASI and WASM's | 
+| Stealify Chromium | 100% | NodeJS & Chromium Latest Running on the Same V8 Instance. with Optional GraalVM and JVM Support.
 | Stealify | 34% | Universal Concepts to Create Software Using JS as High Level Language a Software Encapsulation SDK | 
 | Stealify Compiler | 76% | KI Driven Autonomouse Software Creation based on Polyglot Code Input | 
 | Stealify Operator | 21% | KI Driven Autonomouse Software Deployment, Operation | 
-| Open PWA | 49% | A Open Standard Platform written in JS offer multiple API's that runs on any Device | 
+| <a href="https://github.com/open-pwa">Open PWA | 49% | A Open Standard Platform written in JS offer multiple API's that runs on any Device | 
 | Stealify Java | 27% | Getting GraalJS NodeJS Compatible without node-graal as also Supply C Bindings for node-v8 to get InterOp with the JVM
 | Stealify Mobile | 85% | Running Linux, NodeJS, JVM on Android & iOS
+| <a href="https://github.com/direktspeed/webstream">WebStream Protocol</a>| 43% | RealTime One To Many Streaming based on torrent & webtrorrent
+
+
+| Topic | Priority % | Details
+| ------------- | ------------- | ------------- | 
+| <a href="https://github.com/couchbase/couchbase-lite-core">Couchbase Lite</a> | 100 % | A key changing Tech Stack Component. SQLite3 for NOSQL.
 | WASM & WASI | 100% | Universal Code Executeable without beeing Rebuild Per Platform aka the next generation Open Modular Software Formart.
+| wasmer.io | 100% | a WASM Runtime Written in Rust with a big Success Story and Ecosystem.
 | neon-bindings/neon | 100% | Optimize the Tooling to create NodeJS Bindings with rust.
 | JVM | | Tuning GC, Compiler Settings and more 
 | V8 | | Embedding it into diffrent Software
 | Chromium | | Security & Embedding as also using it self as a Platform.
 | deno | 100% | a JS Runtime Written in Rust using V8
-| Stealify Chromium | 100% | NodeJS & Chromium Latest Running on the Same V8 Instance. with Optional GraalVM and JVM Support.
-| wasmer.io | 100% | a WASM Runtime Written in Rust with a big Success Story and Ecosystem.
-| <a href="https://github.com/direktspeed/webstream">WebStream Protocol</a>| 43% | RealTime One To Many Streaming based on torrent & webtrorrent
 | WebBiTorrent Protocol | 13% | Bidirectional RealTime Streaming via Many P2P Units in between Maybe Darknet 2.0?
 | Deployment | 100% | I am Addicted to Optimization of the general Deployment Processes needed.
 | Operation | 100% | I Want to Make it Simple again even on Scale with less Human Intervention.
