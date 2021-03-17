@@ -3,7 +3,7 @@
 
 | Projects & Topic | MVP Done in % | Details
 | ------------- | ------------- | ------------- | 
-| <a href="https://github.com/direktspeed/we-design-future">direktspeed/we-design-future</a> | 0% | High Level Roadmap | 
+| <a href="https://github.com/direktspeed/docs-we-design-future">direktspeed/we-design-future</a> | 0% | High Level Roadmap | 
 | <a href="https://github.com/direktspeed/was-browser">direktspeed/was-browser</a> & was | 45% | defining a Platform like Open Pwa but make it work only with a single extensible WASI and WASM's | 
 | Stealify Chromium | 100% | NodeJS & Chromium Latest Running on the Same V8 Instance. with Optional GraalVM and JVM Support.
 | Stealify | 34% | Universal Concepts to Create Software Using JS as High Level Language a Software Encapsulation SDK | 
