@@ -6,12 +6,12 @@
 | <a href="https://github.com/direktspeed/docs-we-design-future">direktspeed/we-design-future</a> | 0% | High Level Roadmap | 
 | <a href="https://github.com/direktspeed/was-browser">direktspeed/was-browser</a> & was | 45% | defining a Platform like Open Pwa but make it work only with a single extensible WASI and WASM's | 
 | Stealify Chromium | 100% | NodeJS & Chromium Latest Running on the Same V8 Instance. with Optional GraalVM and JVM Support.
-| Stealify | 34% | Universal Concepts to Create Software Using JS as High Level Language a Software Encapsulation SDK | 
-| Stealify Compiler | 76% | KI Driven Autonomouse Software Creation based on Polyglot Code Input | 
-| Stealify Operator | 21% | KI Driven Autonomouse Software Deployment, Operation | 
+| <a href="https://github.com/stealify/stealify">Stealify</a> | 34% | Universal Concepts to Create Software Using JS as High Level Language a Software Encapsulation SDK is also included to create custom v8::isolates and other interresting targets as GraalVM | 
+| Stealify Compiler | 76% | KI Driven Autonomouse Software Creation based on Polyglot Code Input more easy explained a transpiler for code into more advanced code including deployment. based on <a href="https://github.com/stealify/stealify">Stealify</a> v8::isolates | 
+| Stealify Operator | 21% | KI Driven Autonomouse Software Deployment, Operation based on <a href="https://github.com/stealify/stealify">Stealify</a> v8::isolates | 
 | <a href="https://github.com/open-pwa">Open PWA | 49% | A Open Standard Platform written in JS offer multiple API's that runs on any Device | 
-| Stealify Java | 27% | Getting GraalJS NodeJS Compatible without node-graal as also Supply C Bindings for node-v8 to get InterOp with the JVM
-| Stealify Mobile | 85% | Running Linux, NodeJS, JVM on Android & iOS
+| Stealify Java | 27% | Getting GraalJS NodeJS Compatible without node-graal using <a href="https://github.com/stealify/stealify">Stealify</a>'s implementations of nodejs core methods. as also Supply Bindings for node-v8 and <a href="https://github.com/stealify/stealify">Stealify</a> v8::isolates to get InterOp with the JVM
+| Stealify Mobile | 85% | Running Linux, NodeJS, v8, JVM on Android & iOS
 | <a href="https://github.com/direktspeed/webstream">WebStream Protocol</a>| 43% | RealTime One To Many Streaming based on torrent & webtrorrent
 
 
@@ -30,9 +30,11 @@
 | Operation | 100% | I Want to Make it Simple again even on Scale with less Human Intervention.
 | Package Creation and Management | 100% | Reducing the Overhead that we have today
 | GraalJS Real World usability | 58% | Researching Best Practices to make existing NodeJS Software run Faster on GraalVM |
+| v8::isolates Real World usability | 58% | Researching Best Practices to make existing NodeJS Software run Faster on v8::isolates |
 
 <p>A lot of Projects as i join them together into a uniq Project to reduce the redundancies in them as also allow to focus on new features and better performance
 together inside the projects. I see redundancy as one of the biggest issues today. As We Produce to much stuff without thinking for example there are over 1000 Package Managers around and maybe even more and they all do the same thing more or less...</p>
+<p> The Only good way forward is Functional Composition and drop the use of ".this" in ECMAScript as also create better tooling.</p> 
 <p><img alt="Franks README Stats" src="https://github-readme-stats.vercel.app/api?username=frank-dspeed"><img alt="Franks Top Used Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=frank-dspeed&hide=html,css"></p>
 
 
