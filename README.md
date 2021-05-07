@@ -3,6 +3,8 @@
 
 | Projects & Topic | MVP Done in % | Details
 | ------------- | ------------- | ------------- | 
+| Streamline | wip | Creating a Complet Process Management System. With Frontend Integration and Editors. Next Level Web Style System |
+| Stealify Components | wip | Creating a Highly Reuseable Collection of WebComponents Including Tooling and SDK for any WebFramework Running on any Environment Cordova, GraalVM, v8:issolates, WASM (Rust WebSys), NodeJS, Deno. WebWorkers and so on.
 | <a href="https://github.com/direktspeed/docs-we-design-future">direktspeed/we-design-future</a> | 0% | High Level Roadmap | 
 | <a href="https://github.com/direktspeed/was-browser">direktspeed/was-browser</a> & was | 45% | defining a Platform like Open Pwa but make it work only with a single extensible WASI and WASM's | 
 | Stealify Chromium | 100% | NodeJS & Chromium Latest Running on the Same V8 Instance. with Optional GraalVM and JVM Support.
@@ -31,6 +33,7 @@
 | Package Creation and Management | 100% | Reducing the Overhead that we have today
 | GraalJS Real World usability | 58% | Researching Best Practices to make existing NodeJS Software run Faster on GraalVM |
 | v8::isolates Real World usability | 58% | Researching Best Practices to make existing NodeJS Software run Faster on v8::isolates |
+| theia/vscode | 100% | Research how to Improve the Deployment and usage inside Cloud Projects, Deployments, As also Modifications like Integrations with Auth Providers and Remote testing. |
 
 <p>A lot of Projects as i join them together into a uniq Project to reduce the redundancies in them as also allow to focus on new features and better performance
 together inside the projects. I see redundancy as one of the biggest issues today. As We Produce to much stuff without thinking for example there are over 1000 Package Managers around and maybe even more and they all do the same thing more or less...</p>
