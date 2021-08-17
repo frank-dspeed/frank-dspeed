@@ -1,8 +1,34 @@
 ### Hi there 👋
-🔭 I’m currently working on ...
+🔭 I’m currently working on Platforms to run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems where i am steak holder. 
+
+
+I am steakholder of the Following Projects
+
+| Projects & Topic | Empty| Details
+| ------------- | ------------- | ------------- | 
+| Chromium & CEF & v8 as also Tooling | 
+| Rust Lang & tooling |
+| wasm & tooling |
+| EcmaScript & Tooling |
+| GraalVM Suite and Tooling |
+| Open Stack and Tooling |
+| Fuchsia and Tooling |
+| Ubuntu & Debian |
+| theia & Tooling |
+| and many more.... |
+
+As you can see my main love is to Create and Run Apps Faster and more Secure and Scaleable on any device and any amount of devices.
+I got no killer product ready at present but i know a lot about Problems in the current App Development Processes that exist and
+try to find solutions for them that will fit together once in a time into a Product Maybe Called Open-Pwa
+
+## Why Open Pwa?
+I know PWA is a Google thing and google is evil but it explains well what i try to archive i want to generate progressiv enhancing apps based on 
+web tech and networking at large scale (KI, BigData).
 
 | Projects & Topic | MVP Done in % | Details
 | ------------- | ------------- | ------------- | 
+| @stealify/dom | 95% MVP | Forked Cheerio, parse5, htmlparser2, jsdom  created a single code base with backward compat to a limited degree. |
+| @stealify/typescript | 35% Experimental | based on @frank-dspeed/typescript-rollup a typescript fork that uses rollup and tsconfig to resolve dependencies
 | Streamline | wip | Creating a Complet Process Management System. With Frontend Integration and Editors. Next Level Web Style System |
 | Stealify Components | wip | Creating a Highly Reuseable Collection of WebComponents Including Tooling and SDK for any WebFramework Running on any Environment Cordova, GraalVM, v8:issolates, WASM (Rust WebSys), NodeJS, Deno. WebWorkers and so on.
 | <a href="https://github.com/direktspeed/docs-we-design-future">direktspeed/we-design-future</a> | 0% | High Level Roadmap | 
