@@ -21,6 +21,24 @@ As you can see my main love is to Create and Run Apps Faster and more Secure and
 I got no killer product ready at present but i know a lot about Problems in the current App Development Processes that exist and
 try to find solutions for them that will fit together once in a time into a Product Maybe Called Open-Pwa
 
+## Why Stealify Lang
+I saw the need for a Polyglot Language Framework and i saw a good Implementation for that as i saw GraalVM i was thinking about that already as i saw that typescript got accepted by users i was not sure about that. Flow was supirior with its type annotation inlined but the vscode integration of typescript was maybe what made it a success. And it showed to me that this is a great way to Improve coders as Rust got created with the same idea in mind directly designed into the language. 
+
+My head was always thinking about the best coding lang now i know it did not exist as each lang has its pros and cons the only solution is a Universal Language that Works and offers fast feedback. But that is not enough the language needs a total new form of Compiler Target VM's including the tooling to profile and optimize this VM's on build and while running. So We need a Compiler Feedback Interface again a Universal one that is able to gather Compiler metrics and other feedback.
+
+i also saw the need to support any language so i do not re invent the wheel i only want to apply the same patterns and a universal language over all existing code so that i need to learn less and can produce more so Stealify was Born the first scope was Simply to create a Collection of Tools then i found out that this does not scale so the first step was to create integrations into existing tools. Here a list of Main Integration points for the Meta Language. As you can see this goes Low Level we call that a so Called Language Framework the following components do form a stealify-ecmascript language framework.
+
+- [ ] stealify-typescript 
+- [ ] stealify-eslint 
+- [ ] stealify-pnp-npm 
+- [ ] stealify-rollup 
+- [ ] stealify-graaljs
+- [ ] stealify-es4x
+- [ ] .....
+
+
+
+
 ## Why Open Pwa?
 I know PWA is a Google thing and google is evil but it explains well what i try to archive i want to generate progressiv enhancing apps based on 
 web tech and networking at large scale (KI, BigData).
