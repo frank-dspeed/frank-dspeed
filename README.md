@@ -1,8 +1,7 @@
 ### Hi there 👋
-🔭 I’m currently working on Platforms to run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems where i am steak holder. 
+🔭 I’m currently working on Platforms to run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems where i am Stakeholder. 
 
-
-I am steakholder of the Following Projects
+I am stakeholder of the Following Projects
 
 | Projects & Topic | Empty| Details
 | ------------- | ------------- | ------------- | 
@@ -19,7 +18,7 @@ I am steakholder of the Following Projects
 
 As you can see my main love is to Create and Run Apps Faster and more Secure and Scaleable on any device and any amount of devices.
 I got no killer product ready at present but i know a lot about Problems in the current App Development Processes that exist and
-try to find solutions for them that will fit together once in a time into a Product Maybe Called Open-Pwa
+try to find solutions for them that will fit together once in a time into a Product Maybe Called Stealify Lang and that will be used to write a Platform that is install able on Legacy OS'es like ChromiumOS FuchsiaOS WindowsOS Linux and Mac supporting the most majority of CPU's and GPU's as also Interface Boards so it is a Great fit to deploy and code apps for that target Environment. OpenPwa should be able to run Stealify Modules and enforce rules on them.
 
 ## Why Stealify Lang
 I saw the need for a Polyglot Language Framework and i saw a good Implementation for that as i saw GraalVM i was thinking about that already as i saw that typescript got accepted by users i was not sure about that. Flow was supirior with its type annotation inlined but the vscode integration of typescript was maybe what made it a success. And it showed to me that this is a great way to Improve coders as Rust got created with the same idea in mind directly designed into the language. 
@@ -36,9 +35,6 @@ i also saw the need to support any language so i do not re invent the wheel i on
 - [ ] stealify-es4x
 - [ ] .....
 
-
-
-
 ## Why Open Pwa?
 I know PWA is a Google thing and google is evil but it explains well what i try to archive i want to generate progressiv enhancing apps based on 
 web tech and networking at large scale (KI, BigData).
@@ -52,7 +48,7 @@ web tech and networking at large scale (KI, BigData).
 | <a href="https://github.com/direktspeed/docs-we-design-future">direktspeed/we-design-future</a> | 0% | High Level Roadmap | 
 | <a href="https://github.com/direktspeed/was-browser">direktspeed/was-browser</a> & was | 45% | defining a Platform like Open Pwa but make it work only with a single extensible WASI and WASM's | 
 | Stealify Chromium | 100% | NodeJS & Chromium Latest Running on the Same V8 Instance. with Optional GraalVM and JVM Support.
-| <a href="https://github.com/stealify/stealify">Stealify</a> | 34% | Universal Concepts to Create Software Using JS as High Level Language a Software Encapsulation SDK is also included to create custom v8::isolates and other interresting targets as GraalVM | 
+| <a href="https://github.com/stealify/stealify">Stealify</a> | 34% | Universal Polyglot Coding Language with own Opinions and Concepts to Create Software highly ECMAScript inspired is a High Level Language a Software Encapsulation SDK is also included Compiles directly to Stack. The First Stack Coding Language. Can Also create custom v8::isolates and other interresting targets GraalVM | 
 | Stealify Compiler | 76% | KI Driven Autonomouse Software Creation based on Polyglot Code Input more easy explained a transpiler for code into more advanced code including deployment. based on <a href="https://github.com/stealify/stealify">Stealify</a> v8::isolates | 
 | Stealify Operator | 21% | KI Driven Autonomouse Software Deployment, Operation based on <a href="https://github.com/stealify/stealify">Stealify</a> v8::isolates | 
 | <a href="https://github.com/open-pwa">Open PWA | 49% | A Open Standard Platform written in JS offer multiple API's that runs on any Device | 
