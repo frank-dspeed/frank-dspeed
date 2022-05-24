@@ -320,6 +320,7 @@
                                 </g>
                                 <g transform="translate(315, 0)">
                                     <rect class="day" x="0" y="4" width="11" height="11" fill="#ebedf0" rx="2" ry="2"/>
+                                    <rect class="day" x="0" y="19" width="11" height="11" fill="#9be9a8" rx="2" ry="2"/>
                                 </g>
                             </g>
                             <g transform="translate(0, 144)">
@@ -4301,7 +4302,7 @@
                                 <div class="title">
                                     <span class="prefix">Great</span>
                                     inspirer
-                                    <span class="gh">ranked 18.8k out of 308m repositories</span>
+                                    <span class="gh">ranked 18.9k out of 308m repositories</span>
                                 </div>
                                 <div class="text">Maintaining or created a repository which has been forked 452 times</div>
                             </div>
