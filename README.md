@@ -1,3 +1,18 @@
+### What i am doing in Short
+I Help Organisations to Produce Web Driven Applications with and without a GUI i invested a lot of time into messaging and context boundary issues the fundamentals of distributed systems and load optimization. This made me a Uniq Source of Knowleg about Fast Rendering of big WebApplications and Fast Execution of Large Distributed Tasks parallel and in sync.
+
+## Talks
+- How to create Desktop Apps with Oracle GraalVM, NodeJS, Deno and Chromium as a Platform and or Any WebView Implementation eg: JavaFX, jcef, javacef
+  - You will learn how to Create a Web Application that is using python via GraalVM directly exposed inside the Browsers Context as Function.
+  - You will learn how to Control diffrent Browsers via the low level devtools Protocol and other InterOp Topics
+  - Every Talk should have something Amazing so you will learn how to Binary Pipe Data between Multiple Contexts GraalVM, NodeJS, Browsers
+    The Amazing part of a Binary Pipe is that you can pipe raw binary data out of every native code application into a other. Enables for example
+      - Direct Rendering from Blender (Software to Produce 3d Movies the Cinema Once) onto WebGPU (a raw GPU Api replacing WebGL in browsers.)
+- How to create and Maintain Web Driven Apps Repository Organisation Package Managers Transpillers handle all the Ecosystem Edge cases fast to get faster results choose Depenencies Code Auditing License Managment.
+- CI Testing and Releasing Optimization aka Reducing time to build and test. 
+- Language Implementation on GraalVM
+
+
 ### Hi there 👋
 🔭 I’m currently working on Platforms to run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems where i am Stakeholder. 
 
