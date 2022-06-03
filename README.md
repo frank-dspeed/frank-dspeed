@@ -1,7 +1,7 @@
 ### What i am doing in Short
 I Help Organisations to Produce Web Driven Applications with and without a GUI i invested a lot of time into messaging and context boundary issues the fundamentals of distributed systems and load optimization. This made me a Uniq Source of Knowleg about Fast Rendering of big WebApplications and Fast Execution of Large Distributed Tasks parallel and in sync.
 
-## Talks
+## Current Talks
 - How to create Desktop Apps with Oracle GraalVM, NodeJS, Deno and Chromium as a Platform and or Any WebView Implementation eg: JavaFX, jcef, javacef
   - You will learn how to Create a Web Application that is using python via GraalVM directly exposed inside the Browsers Context as Function.
   - You will learn how to Control diffrent Browsers via the low level devtools Protocol and other InterOp Topics
@@ -50,9 +50,15 @@ i also saw the need to support any language so i do not re invent the wheel i on
 - [ ] stealify-es4x
 - [ ] .....
 
-## Why Open Pwa?
+## Why Open Pwa? 
 I know PWA is a Google thing and google is evil but it explains well what i try to archive i want to generate progressiv enhancing apps based on 
-web tech and networking at large scale (KI, BigData).
+web tech and networking at large scale (KI, BigData). 
+
+## Open PWA is already Dead=? Yes! Web Driven Application is Born WDA
+Yes it is it will get a proposal for a Universal Permission and Install System for the WebInterop Platforms (wintercg)
+It also trys to algin Api's like NodeJS VM Module and WebWorkers as also importScripts to have a single way to deploy
+Web Driven Applications.
+
 
 | Projects & Topic | MVP Done in % | Details
 | ------------- | ------------- | ------------- | 
