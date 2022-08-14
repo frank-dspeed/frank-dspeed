@@ -4285,7 +4285,7 @@
                                 <div class="title">
                                     <span class="prefix">Master</span>
                                     developer
-                                    <span class="gh">ranked 6.88k out of 96m users</span>
+                                    <span class="gh">ranked 6.89k out of 96m users</span>
                                 </div>
                                 <div class="text">Published 492 public repositories</div>
                             </div>
@@ -4455,7 +4455,7 @@
                                     </defs>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="gauge info">
                                         <circle class="gauge-base" r="25" cx="28" cy="28"/>
-                                        <circle class="gauge-arc" transform="rotate(-90 28 28)" r="25" cx="28" cy="28" stroke-dasharray="5.69625 155"/>
+                                        <circle class="gauge-arc" transform="rotate(-90 28 28)" r="25" cx="28" cy="28" stroke-dasharray="5.734999999999999 155"/>
                                     </svg>
                                     <svg xmlns="http://www.w3.org/2000/svg" mask="url(#mask)">
                                         <g transform="translate(4 4)" fill="none" fill-rule="evenodd">
@@ -4480,7 +4480,7 @@
                                     maintainer
                                     <span class="gh">ranked 32k out of 333m repositories</span>
                                 </div>
-                                <div class="text">Maintaining a repository with 1147 stars</div>
+                                <div class="text">Maintaining a repository with 1148 stars</div>
                             </div>
                         </div>
                         <div class="achievement c largeable-width-half">
