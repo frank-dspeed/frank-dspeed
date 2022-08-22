@@ -1,7 +1,12 @@
 ### What i am doing in Short
 I Help Organisations to Produce Web Driven Applications with and without a GUI i invested a lot of time into messaging and context boundary issues the fundamentals of distributed systems and load optimization. This made me a Uniq Source of Knowleg about Fast Rendering of big WebApplications and Fast Execution of Large Distributed Tasks parallel and in sync.
 
+At Present i mainly apply this HPC Fundamentals on OS Core Level while creating a Git Management System (Workflow) as Also A Coding Language that reuses existing Languages. And a Build Tool that can Guess Possible Builds by Understanding your Code.
+
+My Dream is it to create a Easy way to Create Software that Follows Today Standards while droping all the history related bloat that we produced before as we got in the early days not the Processor Power to Build Software that Manages it self we got more Processor Power then we Need today but we waist humand Power. This needs to end.
+
 ## Current Talks
+- Master Class V8, JVM Engineering as also VMM Concepts on a Low Level. Kernel Designs and Interfaces.
 - How to create Desktop Apps with Oracle GraalVM, NodeJS, Deno and Chromium as a Platform and or Any WebView Implementation eg: JavaFX, jcef, javacef
   - You will learn how to Create a Web Application that is using python via GraalVM directly exposed inside the Browsers Context as Function.
   - You will learn how to Control diffrent Browsers via the low level devtools Protocol and other InterOp Topics
@@ -11,7 +16,13 @@ I Help Organisations to Produce Web Driven Applications with and without a GUI i
 - How to create and Maintain Web Driven Apps Repository Organisation Package Managers Transpillers handle all the Ecosystem Edge cases fast to get faster results choose Depenencies Code Auditing License Managment.
 - CI Testing and Releasing Optimization aka Reducing time to build and test. 
 - Language Implementation on GraalVM
-
+- Language Implementation in ECMAScript via tagged template strings aka how Stealify Lang Is Implemented.
+```
+cpp``
+es2022``
+java``
+capn``
+```
 
 ### Hi there 👋
 🔭 I’m currently working on Platforms to run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems where i am Stakeholder. 
