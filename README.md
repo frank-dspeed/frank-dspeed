@@ -1,5 +1,43 @@
+### Hi there 👋 I am ✨ Frank Lemanschik ✨ a German Distributed Cross Arch Platform OS Engineer.
+
+## 🔭 I’m currently working on:
+a ECMAScript Driven ECOSYSTEM to run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems dependencies like Chromium, ChromiumOS, NodeJS, V8, FuchsaOS, Linux. see: https://github.com/stealify
+
+## 🌱 I’m currently learning
+Building Universal Capability based Systems to create faster Software my learning Source is real Production code that is to hard to maintain update and work with overall.
+
+## 👯 I’m looking to collaborate on:
+Eveything in that short High Level view: Rust, C, C++, LLVM, Linux, Android, FuchsiaOS, Chromium, GraalVM and all Stuff Envolved in Building them and software with them. https://github.com/stealify-backports 
+
+## 🤔 I’m looking for help with:
+With the https://github.com/stealify Overall Project i need to create a Community of Passionated Engineers most best Professionals that already understand the core problem and help me to Apply the needed Proven Solutions to them. Like Making Libs work with Capability Based Invocation Procedure Call Protocol. see: CapNproto.
+
+# 💬 Ask me about:
+- VM Engineering
+- Engineering Fundamentals ALU Design, CPU Design, GPU and so on BUS Systems processing methods 
+- Operating System Design and Security as also Performance Tuning any Os, May it be Your Own Written Kernel or Linux, MacOS, FuchsiaOs, Android, IOS, I am your Man i invested over 10 Years into reading the docs and Fundamentals.
+- JVM Implementation
+- V8 Implementation
+- VMM Design and Implementation 
+- ECMAScript Engine Design and Embedding TC39 Specs
+- Browser Implementation and Design as also Interop and everything you can know about that beasts of Software that need to be highly Secure as They execute untrusted Source Code.
+- Confined Environments and Hardining as also Management and Operation of Large Deployments.
+- Declarativ Builds and Build Systems overall
+- Coding Language Implementation and Design.
+
+# 📫 How to reach me:
+Use any Social Media Even github my Full Name is Frank Lemanschik is you maybe Know already see: 😄
+
+# 😄 Pronouns: 
+Fraenk or simply call me SP33D or Bomberman Two Nicks from my Early days as i learn2crack and reverse engineered 
+
+# ⚡ Fun fact: ... 
+- Windows is Possible without Spyware https://ameliorated.info/documentation.html
+- There is over 100x Code redundancy in near every bigger project dependencie management is a own job today
+- Technical debt often gets Ignored Until It is to late
+
 ### What i am doing in Short
-I Help Organisations to Produce Web Driven Applications with and without a GUI i invested a lot of time into messaging and context boundary issues the fundamentals of distributed systems and load optimization. This made me a Uniq Source of Knowleg about Fast Rendering of big WebApplications and Fast Execution of Large Distributed Tasks parallel and in sync.
+I Help Organisations to Produce Web Driven Applications with and without a GUI also Embedded Devices I did invest a lot of time diging into messaging and context boundary issues the fundamentals of distributed systems and load optimization. This made me a Uniq Source of Knowleg about Fast Rendering of big WebApplications and Fast Execution of Large Distributed Tasks parallel and in sync. I Gained also a Lot of Language Implementer and VM Engineering Knowleg while doing the before sayed. I am a Security aware Person that spots 0Day issues on a daily basis but also i was never able to fix them fast enough i am a single Person thats why i invent all this to address my own need to Build Software as a Single Person whit the Quality and Standards of Big Companys to solve the needs of them fast and with the needed Quality and Security Considerations.
 
 At Present i mainly apply this HPC Fundamentals on OS Core Level while creating a Git Management System (Workflow) as Also A Coding Language that reuses existing Languages. And a Build Tool that can Guess Possible Builds by Understanding your Code.
 
@@ -23,24 +61,6 @@ es2022``
 java``
 capn``
 ```
-
-### Hi there 👋
-🔭 I’m currently working on Platforms to run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems where i am Stakeholder. 
-
-I am stakeholder of the Following Projects
-
-| Projects & Topic | Empty| Details
-| ------------- | ------------- | ------------- | 
-| Chromium & CEF & v8 as also Tooling | 
-| Rust Lang & tooling |
-| wasm & tooling |
-| EcmaScript & Tooling |
-| GraalVM Suite and Tooling |
-| Open Stack and Tooling |
-| Fuchsia and Tooling |
-| Ubuntu & Debian |
-| theia & Tooling |
-| and many more.... |
 
 As you can see my main love is to Create and Run Apps Faster and more Secure and Scaleable on any device and any amount of devices.
 I got no killer product ready at present but i know a lot about Problems in the current App Development Processes that exist and
@@ -70,6 +90,10 @@ Yes it is it will get a proposal for a Universal Permission and Install System f
 It also trys to algin Api's like NodeJS VM Module and WebWorkers as also importScripts to have a single way to deploy
 Web Driven Applications.
 
+## CapN is Born
+Out of All the Engineering on Concepts like Open PWA and later WDA as also diffrent other App Concepts we finaly Found a good Solution to code modular
+web driven apps its not a Real FrameWork as Open PWA Was designed it is more low level it is a Capability Based Nativ Protocol we Created Interop
+between that and ECMAScript Driven Applications via Multiple Methods and Interfaces. This allows Finally Fast App Composition.
 
 | Projects & Topic | MVP Done in % | Details
 | ------------- | ------------- | ------------- | 
@@ -115,23 +139,8 @@ together inside the projects. I see redundancy as one of the biggest issues toda
 
 # ⚡ If you want to help me you can deliver the following Resources to me
 
-## Windows 10 Without Spyware
-- https://ameliorated.info/documentation.html
 
-<!--
-**frank-dspeed/frank-dspeed** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
 
 
 
