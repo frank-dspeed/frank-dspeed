@@ -1,10 +1,10 @@
 ### Hi there 👋 I am ✨ Frank Lemanschik ✨ a German Distributed Cross Arch Platform OS Engineer.
 
 ## 🔭 I’m currently working on:
-a ECMAScript Driven ECOSYSTEM to run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems dependencies like Chromium, ChromiumOS, NodeJS, V8, FuchsaOS, Linux. see: https://github.com/stealify
+a ECMAScript Driven ECOSYSTEM to run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems dependencies like Chromium, ChromiumOS, NodeJS, V8, FuchisaOS, Linux. see: https://github.com/stealify
 
 ## 🌱 I’m currently learning
-Building Universal Capability based Systems to create faster Software my learning Source is real Production code that is to hard to maintain update and work with overall.
+Building Universal Capability based Systems to create faster Software my learning Source is real Production code that is to hard to maintain update and work with overall. To reach that learning goal i designed Stealify i guess once i call that Production Ready (It can run Electron Like Apps) i would call it done. 
 
 ## 👯 I’m looking to collaborate on:
 Eveything in that short High Level view: Rust, C, C++, LLVM, Linux, Android, FuchsiaOS, Chromium, GraalVM and all Stuff Envolved in Building them and software with them. https://github.com/stealify-backports 
