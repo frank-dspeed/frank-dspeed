@@ -7,7 +7,7 @@ a ECMAScript Driven ECOSYSTEM to run Code in a Secure Scaleable Fashion on Any D
 Building Universal Capability based Systems to create faster Software my learning Source is real Production code that is to hard to maintain update and work with overall. To reach that learning goal i designed Stealify i guess once i call that Production Ready (It can run Electron Like Apps) i would call it done. 
 
 ## 👯 I’m looking to collaborate on:
-Eveything in that short High Level view: Rust, C, C++, LLVM, Linux, Android, FuchsiaOS, Chromium, GraalVM and all Stuff Envolved in Building them and software with them. https://github.com/stealify-backports 
+Eveything in that short High Level view: Rust, C, C++, LLVM, Linux, Android (LaCrOS), FuchsiaOS, Chromium, GraalVM and all Stuff Envolved in Building them and software with them. https://github.com/stealify-backports 
 
 ## 🤔 I’m looking for help with:
 With the https://github.com/stealify Overall Project i need to create a Community of Passionated Engineers most best Professionals that already understand the core problem and help me to Apply the needed Proven Solutions to them. Like Making Libs work with Capability Based Invocation Procedure Call Protocol. see: CapNproto.
