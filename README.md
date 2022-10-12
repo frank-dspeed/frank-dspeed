@@ -1,4 +1,5 @@
 ### Hi there 👋 I am ✨ Frank Lemanschik ✨ a German Distributed Cross Arch Platform OS Engineer.
+i making you a better coder as also ruler of your own life without you even knowing it! when you not recognize that i did something i did it right!
 
 ## News 
 - [ ] Full Ryzen 7000 Support Lands in Linux Kernel 6.2 - ~Dec 2022 AMD created a distribution porting is needed. 
