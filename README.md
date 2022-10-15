@@ -3,17 +3,17 @@ i making you a better coder as also ruler of your own life without you even know
 
 ## News 
 - [ ] Full Ryzen 7000 Support Lands in Linux Kernel 6.2 - ~Dec 2022 AMD created a distribution porting is needed. 
-- [ ] Ryzen 7000 Support Lands in Linux Kernel 6.0 - 22.09.2022
+- [x] Ryzen 7000 Support Lands in Linux Kernel 6.0 - 22.09.2022
 
 
 ## 🔭 I’m currently working on:
 a ECMAScript Driven ECOSYSTEM to run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems dependencies like Chromium, ChromiumOS, NodeJS, V8, FuchisaOS, Linux. see: https://github.com/stealify
 
 ## 🌱 I’m currently learning
-Building Universal Capability based Systems to create faster Software my learning Source is real Production code that is to hard to maintain update and work with overall. To reach that learning goal i designed Stealify i guess once i call that Production Ready (It can run Electron Like Apps) i would call it done. 
+Communication Skills aka how to transport a educational message in a short efficent way.
 
 ## 👯 I’m looking to collaborate on:
-Eveything in that short High Level view: Rust, C, C++, LLVM, Linux, Android (LaCrOS), FuchsiaOS, Chromium, GraalVM and all Stuff Envolved in Building them and software with them. https://github.com/stealify-backports 
+Eveything in that short High Level view: Rust, C, C++, LLVM, Linux, Android (LaCrOS), FuchsiaOS, Chromium, GraalVM and all Stuff Envolved in Building them and software with them. https://github.com/stealify
 
 ## 🤔 I’m looking for help with:
 With the https://github.com/stealify Overall Project i need to create a Community of Passionated Engineers most best Professionals that already understand the core problem and help me to Apply the needed Proven Solutions to them. Like Making Libs work with Capability Based Invocation Procedure Call Protocol. see: CapNproto.
