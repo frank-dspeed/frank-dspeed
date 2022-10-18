@@ -1,13 +1,27 @@
-### Hi there 👋 I am ✨ Frank Lemanschik ✨ a German Distributed Cross Arch Platform OS Engineer.
+### Hi there 👋 I am ✨ Frank Lemanschik ✨ a German Distributed Cross Arch Platform OS and WebPlatform Engineer.
+I create and evaluate methods to run Software on the large scale from consumer software with Millions of users to Web Pages with millions of views per day. To Multimedia Sharing and Creation Platforms on the Web. 
 i making you a better coder as also ruler of your own life without you even knowing it! when you not recognize that i did something i did it right!
+
+My main Performance keymetrics are: 
+- Build Time, Test Execution Time, Time till i see a visible Change, How often do i need to adjust places outside my change to get the change into the project. ......
+
+## Books
+- History of Software Design Patterns vol. 1 - a Compendium of Software design patterns and context why they existed.
+- History of Coding Languages vol. 1
+- History of Hardware vol. 1
+- History of the Internet and its Communitys and Services
+- History of Security vol. 1
+- ECMAScript/Javascript the good and the bad parts a catch up on Javascript the good and the bad parts with my own opinions and updates. 
+- Create Web Driven Applications and WebPlatforms. A Compendium with generic knowleg about the current state of WebPlatforms.
+- The future of the Linux Kernel without Rust. but With ECMAScript.
+- Modular Task Component based Application Design in a zero trust world or How to build a Cloud Service Provider or any Cloud Product.
 
 ## News 
 - [ ] Full Ryzen 7000 Support Lands in Linux Kernel 6.2 - ~Dec 2022 AMD created a distribution porting is needed. 
 - [x] Ryzen 7000 Support Lands in Linux Kernel 6.0 - 22.09.2022
 
-
 ## 🔭 I’m currently working on:
-a ECMAScript Driven ECOSYSTEM to run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems dependencies like Chromium, ChromiumOS, NodeJS, V8, FuchisaOS, Linux. see: https://github.com/stealify
+a ECMAScript Driven ECOSYSTEM to Build and run Code in a Secure Scaleable Fashion on Any Device and reduce the existing redundancies in the Ecosystems dependencies like Chromium, ChromiumOS, NodeJS, V8, FuchisaOS, Linux. see: https://github.com/stealify
 
 ## 🌱 I’m currently learning
 Communication Skills aka how to transport a educational message in a short efficent way.
