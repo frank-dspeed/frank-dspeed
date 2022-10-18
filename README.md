@@ -50,8 +50,10 @@ At Present i mainly apply this HPC Fundamentals on OS Core Level while creating 
 My Dream is it to create a Easy way to Create Software that Follows Today Standards while droping all the history related bloat that we produced before as we got in the early days not the Processor Power to Build Software that Manages it self we got more Processor Power then we Need today but we waist humand Power. This needs to end.
 
 ## Current Talks
+- Coding Languages the Good and the bad Parts. Mainly a Conclusion of my Book "Coding Languages the Good and the Bad parts".
+- Application and Software Architecture. Consistent Terminologie helps you to build any Cloud or Software with confidence.
 - Master Class V8, JVM Engineering as also VMM Concepts on a Low Level. Kernel Designs and Interfaces.
-- How to create Desktop Apps with Oracle GraalVM, NodeJS, Deno and Chromium as a Platform and or Any WebView Implementation eg: JavaFX, jcef, javacef
+- How to create Desktop Apps that use a Own Composed Adjusted Webplatform like WPEWebkit with Oracle GraalVM, NodeJS, Deno and Chromium as a Platform and or Any WebView Implementation eg: JavaFX, jcef, javacef
   - You will learn how to Create a Web Application that is using python via GraalVM directly exposed inside the Browsers Context as Function.
   - You will learn how to Control diffrent Browsers via the low level devtools Protocol and other InterOp Topics
   - Every Talk should have something Amazing so you will learn how to Binary Pipe Data between Multiple Contexts GraalVM, NodeJS, Browsers
