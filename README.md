@@ -1,4 +1,6 @@
 ### Hi there 👋 I am ✨ Frank Lemanschik ✨ a German Distributed Cross Arch Platform OS and WebPlatform Engineer.
+i Runned Software and Hardware Consulting Agency known for Radical invitation take it by word Radix the root. That turned into the Technologie Leader in terms of Database and Cloud Performance running the Worlds Fastest Applications Daily Mesured against worlds most biggest Software and Cloud Companys.
+
 I create and evaluate methods to run Software on the large scale from consumer software with Millions of users to Web Pages with millions of views per day. To Multimedia Sharing and Creation Platforms on the Web. 
 i making you a better coder as also ruler of your own life without you even knowing it! when you not recognize that i did something i did it right!
 
