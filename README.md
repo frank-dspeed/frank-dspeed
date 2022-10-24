@@ -15,7 +15,7 @@ My main Performance keymetrics are:
 - History of Hardware vol. 1
 - History of the Internet and its Communitys and Services
 - History of Security vol. 1
-- ECMAScript/Javascript the good and the bad parts a catch up on Javascript the good and the bad parts with my own opinions and updates. 
+- History of ECMAScript/Javascript Runtimes and Engines including the good and the bad parts a catch up on Javascript the good and the bad parts with my own opinions and updates as also large additions about the current state of runtimes and engine implementations. 
 - Create Web Driven Applications and WebPlatforms. A Compendium with generic knowleg about the current state of WebPlatforms.
 - The future of the Linux Kernel without Rust. but With ECMAScript.
 - Modular Task Component based Application Design in a zero trust world or How to build a Cloud Service Provider or any Cloud Product.
@@ -34,7 +34,7 @@ Communication Skills aka how to transport a educational message in a short effic
 Eveything in that short High Level view: Rust, C, C++, LLVM, Linux, Android (LaCrOS), FuchsiaOS, Chromium, GraalVM and all Stuff Envolved in Building them and software with them. https://github.com/stealify
 
 ## 🤔 I’m looking for help with:
-With the https://github.com/stealify Overall Project i need to create a Community of Passionated Engineers most best Professionals that already understand the core problem and help me to Apply the needed Proven Solutions to them. Like Making Libs work with Capability Based Invocation Procedure Call Protocol. see: CapNproto.
+With the https://github.com/stealify Overall Project i need to create a Community of Passionated Engineers most best Professionals that already understand the core problem and help me to Apply the needed Proven Solutions to them. Like Making Libs work with Capability Based Invocation Procedure Call Protocol. see: @stealify/stealify or rtc-cluster/rtc-cluster handel based PeerConnections.
 
 # 💬 Ask me about:
 - VM Engineering
