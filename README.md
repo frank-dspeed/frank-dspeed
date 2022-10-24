@@ -37,17 +37,24 @@ Eveything in that short High Level view: Rust, C, C++, LLVM, Linux, Android (LaC
 With the https://github.com/stealify Overall Project i need to create a Community of Passionated Engineers most best Professionals that already understand the core problem and help me to Apply the needed Proven Solutions to them. Like Making Libs work with Capability Based Invocation Procedure Call Protocol. see: @stealify/stealify or rtc-cluster/rtc-cluster handel based PeerConnections.
 
 # 💬 Ask me about:
-- VM Engineering
-- Engineering Fundamentals ALU Design, CPU Design, GPU and so on BUS Systems processing methods 
-- Operating System Design and Security as also Performance Tuning any Os, May it be Your Own Written Kernel or Linux, MacOS, FuchsiaOs, Android, IOS, I am your Man i invested over 10 Years into reading the docs and Fundamentals.
-- JVM Implementation
-- V8 Implementation
-- VMM Design and Implementation 
-- ECMAScript Engine Design and Embedding TC39 Specs
-- Browser Implementation and Design as also Interop and everything you can know about that beasts of Software that need to be highly Secure as They execute untrusted Source Code.
-- Confined Environments and Hardining as also Management and Operation of Large Deployments.
-- Declarativ Builds and Build Systems overall
-- Coding Language Implementation and Design.
+- Engineering
+  - VM Design Fundamentals
+  - JVM Implementation
+  - V8 Implementation
+  - Compiler and Coding Language Implementations and Designs
+  - Fundamentals ALU Design, CPU Design, GPU and so on BUS / Interrupt System processing methods 
+  - Operating System Design and Security as also Performance Tuning any Os, May it be Your Own Written Kernel or Linux, MacOS, FuchsiaOs, Android, IOS, I am your Man i invested over 10+ Years into reading the docs and Fundamentals.
+  - VMM (VirtualMachineMonitor) Low Level Virtual Machine Management Implementations and Design 
+  - ECMAScript Engine Design and Embedding TC39 Specs
+  - Browser Implementation and Design as also Interop and everything you can know about that beasts of Software that need to be highly Secure as They execute untrusted Source Code.
+  - Confined Environments and Hardining as also Management and Operation of Large Deployments.
+- Declarativ Builds and Build Systems overall interop and migration scenarios for any kind of data
+- Automation Cross Boundarys.
+- Motivation for coders.
+- How to handle Burn Outs.
+- Leadership Mentoring.
+- Company Funding and Founding Strategies.
+- Product Development and Inovation Full lifecycle.
 
 # 📫 How to reach me:
 Use any Social Media Even github my Full Name is Frank Lemanschik is you maybe Know already see: 😄
@@ -57,11 +64,13 @@ Fraenk or simply call me SP33D or Bomberman Two Nicks from my Early days as i le
 
 # ⚡ Fun fact: ... 
 - Windows is Possible without Spyware https://ameliorated.info/documentation.html
+ - Microsoft did switch to Linux so why don't you?
 - There is over 100x Code redundancy in near every bigger project dependencie management is a own job today
+ - Simple example run rmlint on a developer machine google that command and execute it watch the result it is save.
 - Technical debt often gets Ignored Until It is to late
 
 ### What i am doing in Short
-I Help Organisations to Produce Web Driven Applications with and without a GUI also Embedded Devices I did invest a lot of time diging into messaging and context boundary issues the fundamentals of distributed systems and load optimization. This made me a Uniq Source of Knowleg about Fast Rendering of big WebApplications and Fast Execution of Large Distributed Tasks parallel and in sync. I Gained also a Lot of Language Implementer and VM Engineering Knowleg while doing the before sayed. I am a Security aware Person that spots 0Day issues on a daily basis but also i was never able to fix them fast enough i am a single Person thats why i invent all this to address my own need to Build Software as a Single Person whit the Quality and Standards of Big Companys to solve the needs of them fast and with the needed Quality and Security Considerations.
+I Help Organisations to Produce Web Driven Applications with and without a GUI also Embedded Devices I did invest a lot of time diging into messaging and context boundary issues the fundamentals of distributed systems and load optimization. This made me a Uniqe Source of Knowleg about Fast Rendering of big WebApplications and Fast Execution of Large Distributed Tasks parallel and in sync. I Gained also a Lot of Language Implementer and VM Engineering Knowleg while doing the before sayed. I am a Security aware Person that spots 0Day issues on a daily basis but also i was never able to fix them fast enough i am a single Person thats why i invent all this to address my own need to Build Software as a Single Person whit the Quality and Standards of Big Companys to solve the needs of them fast and with the needed Quality and Security Considerations.
 
 At Present i mainly apply this HPC Fundamentals on OS Core Level while creating a Git Management System (Workflow) as Also A Coding Language that reuses existing Languages. And a Build Tool that can Guess Possible Builds by Understanding your Code.
 
