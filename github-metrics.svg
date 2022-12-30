@@ -623,6 +623,7 @@
                                     <rect class="day" x="0" y="19" width="11" height="11" fill="#ebedf0" rx="2" ry="2"/>
                                     <rect class="day" x="0" y="34" width="11" height="11" fill="#ebedf0" rx="2" ry="2"/>
                                     <rect class="day" x="0" y="49" width="11" height="11" fill="#ebedf0" rx="2" ry="2"/>
+                                    <rect class="day" x="0" y="64" width="11" height="11" fill="#ebedf0" rx="2" ry="2"/>
                                 </g>
                             </g>
                             <g transform="translate(0, 144)">
@@ -4490,7 +4491,7 @@
                                 <div class="title">
                                     <span class="prefix">Master</span>
                                     developer
-                                    <span class="gh">ranked 5.45k out of 105m users</span>
+                                    <span class="gh">ranked 5.44k out of 105m users</span>
                                 </div>
                                 <div class="text">Published 586 public repositories</div>
                             </div>
@@ -4683,7 +4684,7 @@
                                 <div class="title">
                                     <span class="prefix">Great</span>
                                     maintainer
-                                    <span class="gh">ranked 33.3k out of 364m repositories</span>
+                                    <span class="gh">ranked 33.4k out of 364m repositories</span>
                                 </div>
                                 <div class="text">Maintaining a repository with 1167 stars</div>
                             </div>
