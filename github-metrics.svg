@@ -4508,7 +4508,7 @@
                                     </defs>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="gauge info">
                                         <circle class="gauge-base" r="25" cx="28" cy="28"/>
-                                        <circle class="gauge-arc" transform="rotate(-90 28 28)" r="25" cx="28" cy="28" stroke-dasharray="504.26666666666665 155"/>
+                                        <circle class="gauge-arc" transform="rotate(-90 28 28)" r="25" cx="28" cy="28" stroke-dasharray="505.29999999999995 155"/>
                                     </svg>
                                     <svg xmlns="http://www.w3.org/2000/svg" mask="url(#mask)">
                                         <g stroke-linecap="round" stroke-width="2" fill="none" fill-rule="evenodd">
@@ -4533,9 +4533,9 @@
                                 <div class="title">
                                     <span class="prefix">Master</span>
                                     developer
-                                    <span class="gh">ranked 5.50k out of 107m users</span>
+                                    <span class="gh">ranked 5.48k out of 107m users</span>
                                 </div>
-                                <div class="text">Published 588 public repositories</div>
+                                <div class="text">Published 589 public repositories</div>
                             </div>
                         </div>
                         <div class="achievement s largeable-width-half">
